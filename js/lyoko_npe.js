@@ -485,6 +485,271 @@ function Lyoko(){
                                     },
                                 ]
                             },
+                            "ALSO" : {
+                                type: "selector",
+                                traditionalType: "adverb",
+                                definition: [
+                                    {
+                                        type: "adverb",
+                                        order: 1,
+                                        text: "in addition; too; besides; as well:"
+                                    },
+                                    {
+                                        type: "adverb",
+                                        order: 2,
+                                        text: "likewise; in the same manner:"
+                                    },
+                                    {
+                                        type: "conjunction",
+                                        order: 3,
+                                        text: "and"
+                                    }
+                                ]
+                            },
+                            "ARIA" : {
+                                type: "subject-object",
+                                traditionalType: "noun",
+                                definition: [
+                                    {
+                                        type: "noun",
+                                        order: 1,
+                                        text: "ARIA"
+                                    },
+                                ]
+                            },
+                            "CONNECT" : {
+                                type: "subject-object",
+                                traditionalType: "noun",
+                                definition: [
+                                    {
+                                        type: "verb",
+                                        order: 1,
+                                        text: "to join, link, or fasten together; unite or bind:",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 2,
+                                        text: "to establish communication between; put in communication:",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 3,
+                                        text: "to have as an accompanying or associated feature:",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 7,
+                                        text: "to become connected; join or unite:",
+                                        usage: "note: used without object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 8,
+                                        text: "(of trains, buses, etc.) to run so as to make connections (often followed by with):",
+                                        usage: "note: used without object"
+                                    },
+                                    {
+                                        type: "adjective",
+                                        order: 13,
+                                        text: "of or relating to a connection or connections:"
+                                    },
+                                ]
+                            },
+                            "PHONE" : {
+                                type: "subject-object",
+                                traditionalType: "noun",
+                                definition: [
+                                    {
+                                        type: "noun",
+                                        order: 1,
+                                        text: "an apparatus, system, or process for transmission of sound or speech to a distant point, especially by an electric device."
+                                    },
+                                    {
+                                        type: "noun",
+                                        order: 2,
+                                        text: "a portable electronic telephone device, as a cell phone, mobile phone, or smartphone."
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 3,
+                                        text: "to speak to or summon (a person) by telephone.",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 4,
+                                        text: "to send (a message) by telephone.",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 5,
+                                        text: "to send a message by telephone.",
+                                        usage: "note: used without object"
+                                    }
+                                ]
+                            },
+                            "TAP" : {
+                                type: "subject-object",
+                                traditionalType: "noun",
+                                definition: [
+                                    {
+                                        type: "verb",
+                                        order: 1,
+                                        text: "to strike with a light but audible blow or blows; hit with repeated, slight blows:",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 2,
+                                        text: "to make, put, etc., by tapping:",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 7,
+                                        text: "to strike lightly but audibly, as to attract attention.",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 8,
+                                        text: "to strike light blows.",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "noun",
+                                        order: 10,
+                                        text: "a light but audible blow:"
+                                    },
+                                    {
+                                        type: "noun",
+                                        order: 11,
+                                        text: "the sound made by this."
+                                    },
+                                ]
+                            },
+                            "SEE" : {
+                                type: "subject-object",
+                                traditionalType: "verb",
+                                definition: [
+                                    {
+                                        type: "verb",
+                                        order: 1,
+                                        text: "to perceive with the eyes; look at.",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 2,
+                                        text: "to view; visit or attend as a spectator:",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 22,
+                                        text: "to have the power of sight.",
+                                        usage: "note: used without object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 23,
+                                        text: "to be capable of perceiving by means of computer vision.",
+                                        usage: "note: used without object"
+                                    },
+                                    {
+                                        type: "verb-phrase",
+                                        order: 29,
+                                        text: "see about; a: to investigate; inquire about.; b: to turn one's attention to; take care of:;"
+                                    },
+                                    {
+                                        type: "verb-phrase",
+                                        order: 30,
+                                        text: "to attend to; take care of:"
+                                    },
+                                ]
+                            },
+                            "WEATHER" : {
+                                type: "effector-infinite",
+                                traditionalType: "noun",
+                                definition: [
+                                    {
+                                        type: "noun",
+                                        order: 1,
+                                        text: "the state of the atmosphere with respect to wind, temperature, cloudiness, moisture, pressure, etc."
+                                    },
+                                    {
+                                        type: "noun",
+                                        order: 2,
+                                        text: "a strong wind or storm or strong winds and storms collectively:"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 5,
+                                        text: "to expose to the weather; dry, season, or otherwise affect by exposure to the air or atmosphere:",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 6,
+                                        text: "to discolor, disintegrate, or affect injuriously, as by the effects of weather:",
+                                        usage: "note: used with object"                                  
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 10,
+                                        text: "to undergo change, especially discoloration or disintegration, as the result of exposure to atmospheric conditions.",
+                                        usage: "note: used without object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 11,
+                                        text: "to endure or resist exposure to the weather:",
+                                        usage: "note: used without object"                                  
+                                    },
+                                ]
+                            },
+                            "TREE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: [
+                                    {
+                                        type: "noun",
+                                        order: 1,
+                                        text: "a plant having a permanently woody main stem or trunk, ordinarily growing to a considerable height, and usually developing branches at some distance from the ground."
+                                    },
+                                    {
+                                        type: "noun",
+                                        order: 2,
+                                        text: "any of various shrubs, bushes, and plants, as the banana, resembling a tree in form and size."
+                                    },
+                                    {
+                                        type: "noun",
+                                        order: 3,
+                                        text: "something resembling a tree in shape, as a clothes tree or a crosstree."
+                                    },
+                                    {
+                                        type: "noun",
+                                        order: 4,
+                                        text: "Mathematics, Linguistics. tree diagram."
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 14,
+                                        text: "to drive into or up a tree, as a pursued animal or person.",
+                                        usage: "note: used with object"
+                                    },
+                                    {
+                                        type: "verb",
+                                        order: 15,
+                                        text: "Informal. to put into a difficult position.",
+                                        usage: "note: used with object"
+                                    }
+                                ]
+                            },
                         }
                     }
                 }
@@ -1042,8 +1307,11 @@ function Lyoko(){
             let parseStream = stream || self.dictionary.stack.STREAM;
             let sections = [];
             let breakpoints = [];
-
-            for(let j=0; j<self.dictionary.stack.SENTENCE.length; j++){// store the locations of the sentence endings (periods/full stops)
+            
+            let shiftValue = self.dictionary.stack.PHRASE.length;
+            
+            let j = self.dictionary.stack.PHRASE.length;
+            for(;j<self.dictionary.stack.SENTENCE.length; j++){// store the locations of the sentence endings (periods/full stops)
                 breakpoints.push(self.dictionary.stack.SENTENCE[j].index);
             }
 
@@ -1060,10 +1328,11 @@ function Lyoko(){
                     /*if(parseStream[l].element!=null){
                         document.getElementById("atown-output-container").appendChild(parseStream[l].element);
                     }*/
-                    if(self.dictionary.stack.PHRASE.length==h){
+                    if(self.dictionary.stack.PHRASE.length==h+shiftValue){
+                        console.log(`h: ${h}`);
                         self.dictionary.stack.PHRASE.push([]);
                     }
-                    self.dictionary.stack.PHRASE[h].push(parseStream[l]);
+                    self.dictionary.stack.PHRASE[h+shiftValue].push(parseStream[l]);
                     l++;
                 }
             }
@@ -1071,7 +1340,7 @@ function Lyoko(){
             console.log("----phrases----");
             let phrases = self.dictionary.stack.PHRASE;
             console.log(phrases);
-            for(let m = 0; m<phrases.length; m++){
+            for(let m = shiftValue; m<phrases.length; m++){
 
                 if(self.dictionary.stack.SEMANTICS.length==m){
                     self.dictionary.stack.SEMANTICS.push(
@@ -1186,16 +1455,31 @@ function Lyoko(){
 
             console.log("------semantics-------");
             console.log(self.dictionary.stack.SEMANTICS);
-
+            self.dictionary.stack.STREAM = [];
         }
     }
 }
 
 document.addEventListener("DOMContentLoaded", function(){
+    var session = Lyoko();
+    
     document.getElementById("submit-terminal-input-button").addEventListener("click", function(){
-        let speech = document.getElementById("terminal-input-container").value;
-
-        var session = Lyoko();
+        let speechElement = document.getElementById("terminal-input-container");
+        let speech = speechElement.value;
+        
+        while(speechElement.value!=""){
+            speechElement.value="";
+        }
+        
+        let bubble = document.createElement("div");
+        
+        bubble.innerHTML = speech;
+        bubble.style = `z-index: 50; display: block; width: 250px; height: 125px; border-radius: 10px; background-color: rgba(15, 87, 255, 0.95); margin: 3% auto; color: white; padding: 1%`;
+        document.getElementById("message-output-container").appendChild(bubble);
+        
+        //let bHeight = bubble.offsetHeight;
+        
+        
         let parseList = session.lexer(speech);
         let parseStream = session.parser(parseList);
         session.execute(parseStream);
