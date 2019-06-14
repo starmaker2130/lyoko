@@ -1,0 +1,1 @@
+In the pARk, there is a store called "Snack Shack". In this store, you can stream whatever content you like and watch it with friends. You can also order snacks delivered straight to your Cloud.

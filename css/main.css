@@ -1,0 +1,1162 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body, html{
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+}
+
+.profile-data-field{
+    font-family: monospace;
+}
+
+#selected-profile-name, #selected-store-item-title{
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 1.3em;
+}
+
+#selected-profile-img{
+    border: 2px white solid;
+    border-radius: 5px;
+    width: 200px;
+    height: 200px;
+    background-image: url('../media/img/placeholder-icon.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+    margin: 5% auto;
+}
+
+#selected-store-item-stock{
+    display: block;
+    width: 100%;
+    font-size: 1.2em;
+    font-weight: 900;
+    text-align: center;
+}
+
+.more-access-button{
+    display: block;
+    margin: 5% auto 0 auto;
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+    font-weight: 900;
+    text-align: center;
+}
+
+.more-access-button:hover{
+    color: black;
+    background-color: rgba(255, 255, 255, 1.0);
+    cursor: pointer;
+    font-style: italic;
+}
+
+.more-access-button:focus{
+    outline: none;   
+}
+
+#selected-store-item-img{
+    border: 2px white solid;
+    border-radius: 5px;
+    width: 80%;
+    height: 200px;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: black;
+    margin: 5% auto;
+}
+
+#selected-profile-titles{
+    width: 100%;
+    text-align: center;
+    line-height: 50px;
+    height: 50px;
+    font-size: 1.1em;
+}
+
+#selected-profile-summary, #selected-store-item-description{
+    width: 80%;
+    margin: 0 auto;
+    text-align: justify; /*left*/
+    font-size: 1.0em;
+}
+
+#selected-profile-links{
+    width: 150px;
+    height: 40px;
+    margin: 0 auto;
+}
+
+#medium-link{
+    color: white;
+    background-image: url('../media/img/white-medium-logo.png');
+    background-size: 60% 80%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: white;
+}
+
+#medium-link:hover{
+    background-image: url('../media/img/hover-medium-logo.png');
+    background-size: 110% 110%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: black;
+}
+
+#ig-link{
+    color: white;
+    background-image: url('../media/img/ig-logo.png');
+    background-size: 80% 80%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: white;
+}
+
+#ig-link:hover{
+    background-image: url('../media/img/hover-ig-logo.png');
+    background-color: blueviolet;
+    /*background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;*/
+}
+
+.wall-option{
+    background-size: 100% 100%; 
+}
+
+#navigation-container{
+    border-radius: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: inline-block;
+    height: 100%;
+}
+
+.link-button{
+    margin: 0 0 0 auto;
+    display: inline-block;
+    width: 150px;
+    height: 150px;
+    margin: 1% 15px;
+    border-radius: 50%;
+    border: 2px white solid;
+    color: black;
+    background-color: white;
+    font-family: monospace;
+    font-size: 1.1em;
+}
+
+.link-button:hover{
+    cursor: pointer;
+    font-size: 1.25em;
+    font-weight: 900;
+    border-width: 0;
+}
+
+.link-button:focus{
+    outline: none;
+}
+
+#wall-content-container{
+    border-radius: 15px;
+    vertical-align: top;
+    position: absolute;
+    width: 380px;
+    height: 475px;
+    top: 50%; 
+    left: 50%;
+    margin: -237px 0 0 -190px;
+}
+
+.page{
+    width: 100%;
+    height: 0;
+}
+
+#cARd-page{
+    background-color: red;    
+} 
+
+#cARd-link:hover{
+    background-color: black;
+    color: white;
+    font-size: 1.3em;
+    font-weight: 900;
+}
+
+#team-page{
+    background-color: yellow;
+    color: black;
+} 
+
+#team-link:hover{
+    background-color: yellow;
+    color: black;
+}
+
+#store-link:hover{
+    background-color: red;
+    color: white;
+}
+
+#contact-page, #contact-link:hover{
+    background-color: blue;
+    color: white;
+}
+
+#main-app-container{
+    cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    font-family: monospace;
+    color: white;
+    top: 0;
+    left: 0;
+    /*margin: -250px 0 0 -250px;*/
+    border-radius: 15px;
+}
+
+.anticipating:hover{
+    box-shadow: 5px 5px 5px white;
+    border: 1px white solid;
+}
+
+#main-title-wrapper{
+    color: white;
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    text-align: center;
+    width: 110px;
+    margin-left: -55px;
+}
+
+#main-title{
+    /*background-color: red;*/
+    overflow: hidden; /* Ensures the content is not revealed until the animation */
+    border-right: .7em solid white; /* The typwriter cursor */
+    white-space: nowrap; /* Keeps the content on a single line */
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    /*letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+        typing 1.5s steps(40, end),
+        blink-caret .75s step-end infinite;
+}
+
+#footer{
+    width: 100%;
+    height: 50px;
+    position: absolute;
+    bottom: 5%;
+}
+
+.footer-button{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    vertical-align: middle;
+    border: 2px white solid;
+    cursor: pointer;
+}
+
+.selected-option{
+    background-color: white !important;
+    color: black !important;
+}
+
+#menu-button, #help-button{
+    margin: 10px;
+}
+
+.footer-button:focus{
+    outline: none;
+}
+
+.footer-button:hover, .selected-option{
+    color: black;
+    background-color: white;
+}
+
+#help-button{
+    float: right;
+}
+
+.menu-option{
+    display: none;
+    opacity: 0;
+}
+
+.footer-button{
+    opacity: 0;
+}
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: white; }
+}
+
+.entry-instruction{
+    font-size: 0.8em;
+    padding: 15px 0;
+    opacity: 0;
+}
+
+#main-content-container{
+    display: none;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#current-title, #current-subtitle{
+    width: 100%;
+    height: auto;
+    text-align: center;
+
+    position: absolute;
+}
+
+#current-title{
+    bottom: 25%;
+    font-size: 1.2em;
+}
+
+#procedure-container, #store-inventory-container, #contact-info-container, #ig-page-description, #medium-page-description{
+    display: none;
+    width: 100%;
+    height: 0;
+    border-radius: 15px;
+    z-index: 101;
+}
+
+#ig-page-description{
+    background-color: blueviolet;
+    font-family: monospace;
+    text-align: center;
+    line-height: 50px;
+    color: white;
+    font-weight: 900;
+}
+
+#medium-page-description{
+    background-color: greenyellow;
+    font-family: monospace;
+    text-align: center;
+    line-height: 50px;
+    color: black;
+    font-weight: 900;
+}
+
+.page-title{
+    background-color: white;
+    width: 100%;
+    font-weight: 900;
+    font-family: monospace;
+    font-size: 1.8em;
+    text-align: center;
+    color: black;
+    height: 65px;
+    line-height: 65px;
+    display: none;
+    opacity: 0;
+    border-radius: 15px;
+}
+
+#team-roster-container{
+    width: 100%;
+    height: 80%;
+    display: none;
+    opacity: 0;
+    overflow-y: scroll;
+}
+
+.roster-item-row{
+    width: 400px;
+    height: 200px;
+    margin: 2% 0 0 10px;
+}
+
+.roster-item-container{
+    position: relative;
+    background-image: url('../media/img/placeholder-icon.png');
+    background-size: 100% 100%;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 3px 3px 3px white;
+    border-radius: 15px;
+    display: inline-block;
+    height: 75%;
+    width: 150px;
+    color: black;
+    font-family: monospace;
+    font-size: 0.9em;
+    vertical-align: top;
+    margin: 10% 15px;
+}
+
+.roster-item-container:hover{
+    margin: 0 auto;
+    background-color: black;
+    height: 100%;
+    width: 195px;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+.profile-img{
+    width: 110px;
+    height: 110px;
+    color: black;
+    position: absolute; 
+    top: 50%;
+    left: 50%;
+    margin: -55px 0 0 -55px;
+}
+
+.profile-name{
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    position: absolute; 
+    bottom: 50%;
+    z-index: 101;
+}
+
+.profile-position{
+    width: 100%;
+    height: 25px;
+    text-align: center;
+    position: absolute; 
+    bottom: 0;
+    z-index: 101;
+}
+
+.page-facade{
+    display: none;
+    opacity: 0;
+    height: 250px;
+    background-color: white;
+    color: black;
+    font-family: monospace;
+    font-size: 1.8em;
+    border-radius: 15px;
+}
+
+#play-section-vid{
+    border-radius: 50%;
+    border: 5px white solid;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    text-align: center;
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    margin-left: -38px;
+    display: none;
+    opacity: 0;
+    z-index: 101;
+    font-size: 1.5em;
+    box-shadow: 0;
+    transition: color 1s, box-shadow 1s, background-color 1s;
+}
+
+#play-section-vid:hover{
+    cursor: pointer;
+    color: greenyellow;
+    box-shadow: 3px 3px 3px greenyellow;
+    background-color: rgba(255, 255, 255, 1.0);
+}
+
+#store-order-overlay{
+    border-radius: 15px;
+    border: 2px white solid;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    text-align: center;
+    width: 90%;
+    height: 125px;
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    display: none;
+    opacity: 0;
+    z-index: 101;
+    font-family: monospace;
+}
+
+#open-order-form-button{
+    vertical-align: top;
+    display: inline-block;
+    border: 2px white solid;
+    background-color: white;
+    border-radius: 50%;
+    color: black;
+    width: 73px;
+    height: 73px;
+    text-align: center;
+}
+
+#team-page-overlay-container, #store-page-overlay-container, #contact-page-overlay-container{
+    display: none;
+    opacity: 0;
+}
+
+#open-order-form-button:hover{
+    background-color: black;
+    color: white;
+    font-weight: 900;
+    cursor: pointer;
+}
+
+#store-item-title{
+    font-size: 1.2em;
+    width: 90%;
+    height: 25px;
+    margin: 2% auto 0 5%;
+    text-align: left;
+    font-weight: 900;
+    display: block;
+}
+
+#store-item-description{
+    width: 200px;
+    height: 73px;
+    display: inline-block;
+    vertical-align: top;
+    text-align: justify;
+}
+
+#play-section-vid:focus, #open-order-form-button:focus{
+    outline: none;
+}
+
+#cARd-page-facade{
+    background-image: url('../media/img/cARd-facade.png');
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#store-page-facade{
+    /*background-image: url('../media/img/cARd-facade.png');
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;*/
+    background-color: red;
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#contact-page-facade{
+    /*background-image: url('../media/img/cARd-facade.png');
+    background-size: 100% 100%;
+    background-position: center center;
+    background-repeat: no-repeat;*/
+    width: 80%;
+    margin: 5% auto 0 auto;
+    font-size: 1.2em;
+    background-color: blue;
+    color: white;
+    text-align: justify;
+    line-height: 35px;
+}
+
+.page-subtitle{
+    height: 25px;
+    line-height: 25px;
+    display: none;
+    background-color: white;
+    color: black;
+    font-family: monospace;
+    font-size: 1.5em;
+    text-align: center;
+    border-radius: 15px;
+}
+
+.page-section-container{
+    opacity: 0;
+    display: none;
+    width: 100%;
+    height: 75px;
+    line-height: 75px;
+    font-weight: 900;
+    font-family: monospace;
+    text-align: center;
+    font-size: 1.0em;
+}
+
+.step-container{
+    background-color: white;
+    color: black;
+    border-bottom: 2px black solid;
+}
+
+.store-item{
+    background-color: red;
+    color: white;
+    border-bottom: 2px white solid;
+}
+
+.contact-info-section{
+    background-color: blue;
+    color: white;
+    border-bottom: 2px white solid;
+}
+
+.page-section-container:hover{
+    background-color: black;
+    border-bottom: 2px black solid;
+    color: white;
+    font-size: 1.3em;
+    cursor: pointer;
+}
+
+
+
+#current-subtitle{
+    bottom: 20%;
+    font-size: 1.1em;
+}
+
+#date-label{
+    position: absolute;
+    top: 1%;
+    left: 1%;
+    color: white;
+    font-weight: bold;
+    opacity: 0;
+}
+
+#year-label{
+    position: absolute;
+    top: 1%;
+    right: 1%;
+    color: white;
+    font-weight: bold;
+    opacity: 0;
+}
+
+#site-title-header{
+    /*position: absolute;
+    top: 1%;
+    left: 1%;*/
+    display: block;
+    width: 250px;
+    margin: 1% auto;
+    color: white;
+    font-weight: bold;
+    opacity: 0;
+}
+
+#menu-container{
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    background-image: url('../media/img/menu-icon.png');
+    background-size: 100% 100%;
+    display: none;
+    opacity: 0;
+    z-index: 100;
+    border-width: 0;
+}
+
+
+#menu-container:hover{
+    cursor: pointer;
+    background-color: white;
+    border: 2px white solid;
+}
+
+.page-container{
+    position: absolute;
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    border-radius: 15px;
+}
+
+#cARd-page{
+    background-color: white;
+}
+
+#team-page{
+    background-color: yellow;
+}
+
+#store-page{
+    background-color: red;
+}
+
+@media screen and (min-width: 500px) and (min-height: 640px){
+    body, html{
+        width: 100%;
+        height: 100%;
+        background-color: black; /* blue*/
+    }
+
+    #main-app-container{
+        cursor: pointer;
+        position: absolute;
+        width: 760px;
+        height: 500px;
+        font-family: monospace;
+        color: white;
+        top: 50%;
+        left: 50%;
+        margin: -250px 0 0 -380px;
+        border-radius: 15px;
+       /* background-image: url('../media/img/bg/shop.gif');*/
+    }
+}
+
+.page-view{
+    width: 100%;
+    height: 0;
+    display: none;
+    opacity: 0;
+}
+
+.home-button{
+    display: block;
+    width: 50px;
+    height: 50px; border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -25px 0 0-25px;
+    background-color: white;
+    color: rgba(255, 0, 81, 1);
+}
+
+.home-button:focus{
+    outline: none;
+}
+
+#annes-shop-container{
+    width: 100%;
+    height: 100%;
+    color: white;
+}
+
+.option{
+    background-color: white;
+    color: black;
+}
+
+.option:hover{
+    background-color: aquamarine;
+    color: white;
+    cursor: pointer;
+}
+
+#flat-menu{
+    /*display: none;
+    opacity: 0;*/
+    width: 250px;
+    height: 75px;
+    margin: 0 auto;
+}
+
+.icon{
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    border: 0;
+    color: white;
+    line-height: 75px;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+}
+
+.icon:hover{
+    border: 2px white solid;
+    width: 98%;
+    cursor: pointer;
+}
+
+#add-room-icon{
+    background-color: red;
+    color: white;
+}
+
+#info-icon{
+    background-color: yellow;
+    color: red;
+}
+
+#pointer{
+    border: 2px black solid;
+    color: black;
+    background-color: rgba(255,255,255,1);
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 5px;
+}
+
+#pointer:hover{
+    color: white;
+    border: 2px white solid;
+    background-color: rgba(0,0,0,1);
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 760px) and (min-width: 420px){
+    /* mobile landscape*/
+    body, html{
+        width: 100%;
+        height: 100%;
+        background-color: black; /*green;*/
+    }
+    
+    #main-app-container{
+        cursor: pointer;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        font-family: monospace;
+        color: white;
+        top: 0;
+        left: 0;
+        margin: 0 auto;
+        border-radius: 15px;
+    }
+
+}
+
+@media only screen and (max-width: 420px){
+    /* mobile portrait*/
+    body, html{
+        background-color: black;/*red;*/
+    }
+    
+    #wall-content-container{
+        border-radius: 15px;
+        width: 305px;
+        height: 400px;
+        top: 50%; 
+        left: 50%;
+        margin: -200px 0 0 -152px;
+    }
+    
+    #navigation-container{
+        border-radius: 15px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        display: inline-block;
+        height: 100%;
+    }
+    
+    .link-button{
+        margin: 2% 15px;
+        display: inline-block;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        color: black;
+        background-color: white;
+        font-family: monospace;
+    }
+
+}
+
+#loading-title{
+    text-align: center;
+    width: 150px;
+    margin: 10% auto;
+    color: white;
+    font-family: monospace;
+}
+
+#loading-bar-container{
+    position: relative;
+    width: 200px;
+    height: 15px;
+    border: 2px white solid;
+    border-radius: 5px;
+    margin: 5% auto;
+}
+
+#loading-bar{
+    background-color: white;
+    height: 10px;
+    width: 0;
+    position: absolute;
+    left: 0;
+    height: 15px;
+}
+
+#overlay{
+    width: 100%;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 100;
+/*    background-color: black;*/
+    background-image: url('../media/img/bg/house2.gif');/*fakenews.gif'); /*rooms1.gif');
+    
+    rooms1.gif -- main
+    twitch.gif -- cARd page
+    fakenews.gif -- team
+    store.gif -- store
+    rooms1.gif -- contact
+    */
+    background-size: auto 150px;
+    background-position: center center;
+    /*background-repeat: no-repeat;*/
+}
+
+.umd-class-footer{
+    line-height: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+#close-profile-button, #close-store-item-button, #close-contact-form-button{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    color: black;
+    border: 2px white solid;
+    background-color: white;
+    font-weight: 900;
+    text-align: center;
+    display: none;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    margin-left: -37px;
+    transition: hover 0.5s;
+    cursor: pointer;
+}
+
+#add-store-item-to-cart-button{
+    position: absolute;
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    right: 5%;
+    bottom: 30%;
+    color: black;
+    background-color: white;
+    font-weight: 900;
+    text-align: center;
+}
+
+#close-profile-button:hover, #close-store-item-button:hover, #close-contact-form-button:hover{
+    color: white;
+    background-color: black;
+}
+
+#close-profile-button:focus, #close-store-item-button:focus, #close-contact-form-button:focus{
+    outline: none;
+}
+
+#contact-form-email-input{
+    color: greenyellow;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 25px;
+    height: 25px;
+    width: 150px;
+    display: block;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+#contact-page-overlay-header{
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: 900;
+    height: 20%;
+    font-size: 1.3em;
+}
+
+#contact-form-message-input{
+    width: 80%;
+    height: 300px;
+    margin: 2% auto;
+    display: block;
+    border-radius: 10px;
+    border-radius: 2px white solid;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: lawngreen;
+    font-weight: 400;
+}
+
+#contact-form-message-input:focus{
+    outline: none;
+}
+
+#contact-form-submit-button{
+    width: 75px;
+    height: 75px;
+    color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+    border-width: 0;
+    border-radius: 50%;
+    display: block;
+    margin: 5% auto;
+}
+
+#contact-form-submit-button:hover{
+    cursor: pointer;
+    font-weight: 900;
+    color: black;
+    background-color: rgba(255, 255, 255, 1.0);
+}
+
+#contact-form-submit-button:focus{
+    outline: none;
+}
+
+#contact-form-container{
+    font-family: monospace;
+    color: white;
+    width: 100%;
+    height: 60%;
+}
+
+#true-overlay{
+    width: 100%;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 150;
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    /*background-image: url('../media/img/bg/shop.gif');*/
+}
+
+#ready-label{
+    opacity: 0;
+    width: 100%;
+    height: 15px;
+    line-height: 15px;
+    text-align: center;
+    vertical-align: middle;
+    font-family: monospace;
+    text-transform: uppercase;
+}
+
+#wall{
+    display: none;
+}
+
+::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em
+}
+
+#wall-header-container{
+    height: 75px;
+    width: 250px;
+    margin: 2% auto;
+}
+
+#social-media-link-container{
+    width: 90px;
+    position: absolute;
+    bottom: 20%;
+    right: 0;
+}
+
+.wall-option{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px white solid;
+    color: white;
+    line-height: 35px;
+    font-size: 0.8em;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
+    background-color: black;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.wall-option:focus{
+    outline: none;
+}
+
+.wall-option:hover{
+    border: 2px white solid;
+    color: black;
+    background-color: white;
+}
+
+#wall-title{
+    display: inline-block;
+    font-family: monospace;
+    font-size: 1.3em;
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    text-align: center;
+    line-height: 35px;
+    vertical-align: top;
+    font-style: italic;
+    text-transform: uppercase;
+    color: black;
+    background-color: white;
+    border-radius: 15px;
+}
+
+#version-number{
+    font-size: 0.6em;
+    width: 100px;
+    text-align: center;
+    margin: 3px auto 0 auto;
+    height: 20px;
+    line-height: 20px;
+    color: white;
+    font-family: monospace;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+}

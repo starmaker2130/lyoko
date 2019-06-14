@@ -1,0 +1,17 @@
+{
+  "name": "houseofvenus-stARterKit",
+  "version": "0.3.2",
+  "private": true,
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "2.4.1",
+    "express": "^4.16.4",
+    "formidable": "^1.1.1",
+    "node-bebop": "^0.6.0",
+    "socket.io": "1.5.0",
+    "which-browser": "^0.4.0"
+  },
+  "scripts": {
+    "start": "node app.js"
+  }
+}
