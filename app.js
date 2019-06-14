@@ -92,42 +92,6 @@ app.get('/grio', function(req, res){
     res.render('grio.html',{root: dir[0]});
 });
 
-app.get('/stream', function(req, res){
-    res.render('stream-main-menu.html',{root: dir[0]});
-});
-
-app.get('/streamChannel', function(req, res){
-    res.render('stream-channel-page.html',{root: dir[0]});
-});
-
-app.get('/deliver', function(req, res){
-    res.render('deliver-main-menu.html',{root: dir[0]});
-});
-
-app.get('/deliverPayment', function(req, res){
-    res.render('deliver-payment-page.html',{root: dir[0]});
-});
-
-app.get('/deliverDrinks', function(req, res){
-    res.render('deliver-drinks-menu.html',{root: dir[0]});
-});
-
-app.get('/deliverSnacks', function(req, res){
-    res.render('deliver-snacks-menu.html',{root: dir[0]});
-});
-
-app.get('/deliver18', function(req, res){
-    res.render('deliver-18-menu.html',{root: dir[0]});
-});
-
-app.get('/deliverReceipt', function(req, res){
-    res.render('deliver-receipt-page.html',{root: dir[0]});
-});
-
-app.get('/deliverTracking', function(req, res){
-    res.render('deliver-tracking-page.html',{root: dir[0]});
-});
-
 /**/
 
 app.get('/css/:stylesheet_id', function(req, res){
