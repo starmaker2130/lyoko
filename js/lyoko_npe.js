@@ -14,8 +14,8 @@ function Lyoko(){
                 rawInputArray.push(rawLexicalInput.substring(0, mark));
                 rawLexicalInput = rawLexicalInput.substring(mark+1);
             }
-            rawInputArray.push(rawLexicalInput);                 
-            //console.log(rawInputArray);                    
+            rawInputArray.push(rawLexicalInput);
+            //console.log(rawInputArray);
             console.log("lexer called complete");
             return rawInputArray;
         },
@@ -25,12 +25,12 @@ function Lyoko(){
             let term, i;
             let self = this;
             for(i=0; i<data.length; i++){
-                term = data[i].toUpperCase();
+                term = data[i].toUpperCase(); //  the current query search term, not case specific as the term is converted to upper case
                 //console.log(term);
 
-                term = this.comb({term: term, index: i});
+                term = this.comb({term: term, index: i}); //
                 //console.log(term);
-                if(self.dictionary[term]!=undefined){
+                if(self.dictionary[term]!=undefined){     //
                     self.dictionary[term]({code: 0, index: i});
                 }
                 else{
@@ -46,7 +46,7 @@ function Lyoko(){
                             name: term,
                             index: i
                         });
-                    }    
+                    }
                 }
             }
 
@@ -67,7 +67,7 @@ function Lyoko(){
         },
         comb: function(data){
             let self = this;
-            let raw = data.term;
+            let raw = data.term;  // the raw value of the current query search term
             let punctuation = [
                 ".",    //0
                 ",",    //1
@@ -83,14 +83,14 @@ function Lyoko(){
 
             let count = [];
             let final = "";
-            
+
             for(let j=0; j< punctuation.length; j++){
-                if(raw.indexOf(punctuation[j])>-1){
-                    count.push(punctuation[j]);
+                if(raw.indexOf(punctuation[j])>-1){   //  if there is punctuation attached to this term, remove it
+                    count.push(punctuation[j]); //  stash the punctuation removed in this count array
                     raw = raw.substring(0, raw.indexOf(punctuation[j]))+raw.substring(raw.indexOf(punctuation[j])+1);
                 }
             }
-            if(count.includes(punctuation[0])){
+            if(count.includes(punctuation[0])) { // if there is a period in the count array then "count" a sentence and add this structure to the core dictionary stack
                 if(self.dictionary.stack.ENVIRONMENT!=null){
                     let env = self.dictionary.stack.ENVIRONMENT[0].env;
                 }
@@ -99,8 +99,9 @@ function Lyoko(){
                     name: "pARk",
                     index: data.index
                 });
-            }                    
-            if(count.includes(punctuation[9])){
+            }
+
+            if(count.includes(punctuation[9])){     //  if there are quotes in the phrase, add an object subject to the stack
                 if(self.dictionary.stack.OBJECTSUBJECTS==null){
                     self.dictionary.stack.OBJECTSUBJECTS = []
                 }
@@ -696,7 +697,7 @@ function Lyoko(){
                                         type: "verb",
                                         order: 6,
                                         text: "to discolor, disintegrate, or affect injuriously, as by the effects of weather:",
-                                        usage: "note: used with object"                                  
+                                        usage: "note: used with object"
                                     },
                                     {
                                         type: "verb",
@@ -708,7 +709,7 @@ function Lyoko(){
                                         type: "verb",
                                         order: 11,
                                         text: "to endure or resist exposure to the weather:",
-                                        usage: "note: used without object"                                  
+                                        usage: "note: used without object"
                                     },
                                 ]
                             },
@@ -795,7 +796,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute playlist functionality');
-                }       
+                }
             },
             FIND: function(data){
                 let self = this;
@@ -815,7 +816,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute search (core subtraction) functionality');
-                }       
+                }
             },
             LOCALIZE: function(data){
                 let self = this;
@@ -835,7 +836,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute playlist functionality');
-                }       
+                }
             },
             REALIZE: function(data){
                 let self = this;
@@ -855,7 +856,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute realize (core hyperreality) functionality');
-                }       
+                }
             },
             DELIVER: function(data){
                 let self = this;
@@ -875,7 +876,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute delivery (core delivery) functionality');
-                }       
+                }
             },
             STREAM: function(data){
                 let self = this;
@@ -895,7 +896,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute delivery (core delivery) functionality');
-                }     
+                }
             },
             FILM: function(data){
                 let self = this;
@@ -915,7 +916,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){// TODO point this functionality to the core dictionary definitions TODO
                     console.log(' execute film functionality');
-                }     
+                }
             },
             CLOUD: function(data){
                 let self = this;
@@ -935,7 +936,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute cloud functionality');
-                }     
+                }
             },
             BRING: function(data){
                 let self = this;
@@ -955,7 +956,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute bring (core delivery) functionality');
-                }     
+                }
             },
             COLLABORATE: function(data){
                 let self = this;
@@ -975,7 +976,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute delivery (core delivery) functionality');
-                }     
+                }
             },
             IN: function(data){
                 let self = this;
@@ -995,7 +996,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute in (core existential attachment) functionality');
-                }     
+                }
             },
             IS: function(data){
                 let self = this;
@@ -1015,7 +1016,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute is (core existential attachment) functionality');
-                }     
+                }
             },
             YOU: function(data){
                 let self = this;
@@ -1035,7 +1036,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute you (core identity) functionality');
-                }     
+                }
             },
             0: function(data){
                 let self = this;
@@ -1055,7 +1056,7 @@ function Lyoko(){
                 }
                 else if(data.code==1){
                     console.log(' execute zero functionality');
-                }     
+                }
             },
             1: function(data){
                 let self = this;
@@ -1307,9 +1308,9 @@ function Lyoko(){
             let parseStream = stream || self.dictionary.stack.STREAM;
             let sections = [];
             let breakpoints = [];
-            
+
             let shiftValue = self.dictionary.stack.PHRASE.length;
-            
+
             let j = self.dictionary.stack.PHRASE.length;
             for(;j<self.dictionary.stack.SENTENCE.length; j++){// store the locations of the sentence endings (periods/full stops)
                 breakpoints.push(self.dictionary.stack.SENTENCE[j].index);
@@ -1351,7 +1352,7 @@ function Lyoko(){
                             semnode: 0,  //  2   item in story --> semantic analysis
                             selector: 0,  //3   aids the viewer in taking action, focus
                             effector: 0, // 4   what allows the viewer to affect action
-                            subjobj: 0, //  5   viewer, drives perspective of story    
+                            subjobj: 0, //  5   viewer, drives perspective of story
                         });
                 }
 
@@ -1386,7 +1387,7 @@ function Lyoko(){
                         document.getElementById(`phrase-container-${m}`).appendChild(phrases[m][n].element);
                     }
                     else if(phrases[m][n].element==null){
-                        if(lexType==undefined||lexType==null||lexType=="undefined"){       
+                        if(lexType==undefined||lexType==null||lexType=="undefined"){
                             let ref = self.dictionary.stack.core.ENGLISH.hov[phrases[m][n].name]();
                             console.log(`] unknown lex type: ${lexType}`);
                             lexType = ref.type;
@@ -1456,7 +1457,7 @@ function Lyoko(){
             console.log("------semantics-------");
             console.log(self.dictionary.stack.SEMANTICS);
             self.dictionary.stack.STREAM = [];
-            
+
             /*
                 TODO:
                 1) FIND THE PHRASES WITH THE HIGHEST ENVIRONMENT VALUES
@@ -1466,8 +1467,8 @@ function Lyoko(){
                 5) DEFINE THE CONFIDENCE STATISTICS FOR THE INTERPRETATION AND BUILD ANONYMOUS FUNCTIONS THAT ACHIEVE THE INTERPRETED FUNCTIONALITIES
                 6) ASSIGN THE ANONYMOUS FUNCTIONS TO THE CORE OPERATION STACK AND START THE EXISTENCE TIMER
                 7) CLICKING ON THE ATOWN OUTPUTS HIGHLIGHTS THE OTHER NODES THAT THE SELECTED CHILD IS CONNECTED TO AS WELL AS ITS RELATIONSHIP TO EACH OF THE OTHER NODES AND VALUE WITHIN THE SENTENCE, PHRASE, or INTERPRETON
-            
-            
+
+
             */
         }
     }
@@ -1475,25 +1476,25 @@ function Lyoko(){
 
 document.addEventListener("DOMContentLoaded", function(){
     var session = Lyoko();
-    
+
     document.getElementById("submit-terminal-input-button").addEventListener("click", function(){
         let speechElement = document.getElementById("terminal-input-container");
         let speech = speechElement.value;
-        
+
         while(speechElement.value!=""){
             speechElement.value="";
         }
-        
+
         let bubble = document.createElement("div");
-        
+
         bubble.innerHTML = speech;
         bubble.style = `z-index: 50; display: block; width: 250px; height: 125px; border-radius: 10px; background-color: rgba(15, 87, 255, 0.95); margin: 3% auto; color: white; padding: 1%`;
         document.getElementById("message-output-container").appendChild(bubble);
-        
+
         //let bHeight = bubble.offsetHeight;
-        
-        
-        let parseList = session.lexer(speech);
+
+
+        let parseList = session.lexer(speech); // generate the set of objects (words) from the plain text provided by the user/developer
         let parseStream = session.parser(parseList);
         session.execute(parseStream);
     });
