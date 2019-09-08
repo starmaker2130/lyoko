@@ -15,8 +15,9 @@ function Lyoko(){
                 rawLexicalInput = rawLexicalInput.substring(mark+1);
             }
             rawInputArray.push(rawLexicalInput);
-            //console.log(rawInputArray);
-            console.log("lexer called complete");
+
+            console.log("lexer called completennnn");
+            console.log(rawInputArray);
             return rawInputArray;
         },
         parser: function(data){
@@ -29,7 +30,7 @@ function Lyoko(){
                 //console.log(term);
 
                 term = this.comb({term: term, index: i}); //
-                //console.log(term);
+                console.log(term);
                 if(self.dictionary[term]!=undefined){     //
                     self.dictionary[term]({code: 0, index: i});
                 }
@@ -751,6 +752,606 @@ function Lyoko(){
                                     }
                                 ]
                             },
+                            "BASE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "PROTEST" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "COUNTRY" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "AFRICA" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "VIDEO" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "PAINTING" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "JUDGEMENT" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "UNION" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "EUROPE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "EUROPEAN" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "AFRICAN" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "RAPID" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SUPPORT" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "FORCE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "REFUGEE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "STREET" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "CAR" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "ROAD" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "CONE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "DIVIDER" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "TRAFFIC" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BOOK" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SHELF" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BED" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "ROOM" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BATH" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "CARPET" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "FLOOR" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "GROUND" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "HANGER" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "UTILITY" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "WATER" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "ELECTRICITY" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "GAS" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "INTERNET" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "WIRELESS" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "MOBILE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "PHONE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BUDE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "TREE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SOUND" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "WEED" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BUSH" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "PLANT" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "FLOWER" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BREAKFAST" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "CLUB" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "PHILOSOPHY" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "FAIL" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SHOW" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "GOD" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "CULTURE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "REALITY" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "TELEVISION" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SOFA" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "COUCH" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BOOK" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SAFE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "NIGGER" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "NIGGAR" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "DANGER" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BASTION" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "FREEDOM" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SPEECH" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "OF" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "YES" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "WHARF" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SKYSCRAPER" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BUILDING" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "DRIVE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "WOOD" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "RANGE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "DIVERSE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "NEIGHBORHOOD" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "NEIGHBOR" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "HOOD" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "DOCK" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BAY" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BRIDGE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SQUARE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "PARIS" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "MONTREAL" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BRAZZAVILLE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "LONDON" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "CAMBRIDGE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SILVER SPRING" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "GROUP" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "CAPITAL" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "DEVELOPMENT" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "DECADE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "RETAIL" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "HATE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "CRIME" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "HILARIOUS" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "COON" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "DUNE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SAND" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "FUCK" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SITUATION" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "MASTURBATE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "CRY" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SEX" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "DO" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "FEAR" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "FIRE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "HELLO" : {
+                                type: "selector",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "WORLD" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "SPECIAL" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "WEDDING" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "MARKET" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "PLACE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "IDEA" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "MARKETPLACE" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "RUN" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "FAR" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "FAST" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "FURIOUS" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "BLACK" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "WOMAN" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
+                            "MAN" : {
+                                type: "object-subject",
+                                traditionalType: "noun",
+                                definition: []
+                            },
                         }
                     }
                 }
@@ -1078,7 +1679,7 @@ function Lyoko(){
                     console.log(' execute one functionality');
                 }
             },
-            2: function(){
+            2: function(data){
                 let self = this;
                 //console.log(`[LPARSER] O [INT]`);
 
@@ -1098,7 +1699,7 @@ function Lyoko(){
                     console.log(' execute two functionality');
                 }
             },
-            3: function(){
+            3: function(data){
                 let self = this;
                 //console.log(`[LPARSER] O [INT]`);
 
@@ -1118,7 +1719,7 @@ function Lyoko(){
                     console.log(' execute three functionality');
                 }
             },
-            4: function(){
+            4: function(data){
                 let self = this;
                 //console.log(`[LPARSER] O [INT]`);
 
@@ -1138,7 +1739,7 @@ function Lyoko(){
                     console.log(' execute four functionality');
                 }
             },
-            5: function(){
+            5: function(data){
                 let self = this;
                 //console.log(`[LPARSER] O [INT]`);
 
@@ -1158,7 +1759,7 @@ function Lyoko(){
                     console.log(' execute five functionality');
                 }
             },
-            6: function(){
+            6: function(data){
                 let self = this;
                 //console.log(`[LPARSER] O [INT]`);
 
@@ -1178,7 +1779,7 @@ function Lyoko(){
                     console.log(' execute six functionality');
                 }
             },
-            7: function(){
+            7: function(data){
                 let self = this;
                 //console.log(`[LPARSER] O [INT]`);
 
@@ -1198,7 +1799,7 @@ function Lyoko(){
                     console.log(' execute seven functionality');
                 }
             },
-            8: function(){
+            8: function(data){
                 let self = this;
                 //console.log(`[LPARSER] O [INT]`);
 
@@ -1218,7 +1819,7 @@ function Lyoko(){
                     console.log(' execute eight functionality');
                 }
             },
-            9: function(){
+            9: function(data){
                 let self = this;
                 //console.log(`[LPARSER] O [INT]`);
 
@@ -1238,7 +1839,7 @@ function Lyoko(){
                     console.log(' execute nine functionality');
                 }
             },
-            10: function(){
+            10: function(data){
                 let self = this;
                 //console.log(`[LPARSER] O [INT]`);
 
@@ -1262,46 +1863,2449 @@ function Lyoko(){
                 let self = this;
                 self[0]({code: data.code, index: data.index});
             },
-            ONE: function(){
+            ONE: function(data){
                 let self = this;
                 self[1]({code: data.code, index: data.index});
             },
-            TWO: function(){
+            TWO: function(data){
                 let self = this;
                 self[2]({code: data.code, index: data.index});
             },
-            THREE: function(){
+            THREE: function(data){
                 let self = this;
                 self[3]({code: data.code, index: data.index});
             },
-            FOUR: function(){
+            FOUR: function(data){
                 let self = this;
                 self[4]({code: data.code, index: data.index});
             },
-            FIVE: function(){
+            FIVE: function(data){
                 let self = this;
                 self[5]({code: data.code, index: data.index});
             },
-            SIX: function(){
+            SIX: function(data){
                 let self = this;
                 self[6]({code: data.code, index: data.index});
             },
-            SEVEN: function(){
+            SEVEN: function(data){
                 let self = this;
                 self[7]({code: data.code, index: data.index});
             },
-            EIGHT: function(){
+            EIGHT: function(data){
                 let self = this;
                 self[8]({code: data.code, index: data.index});
             },
-            NINE: function(){
+            NINE: function(data){
                 let self = this;
                 self[9]({code: data.code, index: data.index});
             },
-            TEN: function(){
+            TEN: function(data){
                 let self = this;
                 self[10]({code: data.code, index: data.index});
-            }
+            },
+            BASE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "base";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "base",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            PROTEST: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 75px; height: 50px; background-color: #34970d; color: black; border-radius: 5px; text-align: center; line-height: 50px;";
+                marker.innerHTML = "protest";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "protest",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            COUNTRY: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "deliver";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "delivery-bring",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            AFRICA: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 150px; height: 150px; background-color: gold; color: black; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "Africa";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "Africa",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            VIDEO: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "video";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "video",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            PAINTING: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "painting";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "painting",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            JUDGEMENT: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: #090922; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "judgement";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "judgement",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            UNION: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: #203948; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "union";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "union",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            EUROPE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: #778921; color: white; border-radius: 5px; text-align: center; line-height: 50px;";
+                marker.innerHTML = "Europe";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "Europe",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            EUROPEAN: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: black; color: white; border-radius: 5px; text-align: center; line-height: 50px;";
+                marker.innerHTML = "European";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "European",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            AFRICAN: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: white; color: blue; border: 2px blue solid; border-radius: 5px; text-align: center; line-height: 50px;";
+                marker.innerHTML = "African";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "African",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            RAPID: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: #0f4f4f; color: white; border-radius: 5px; text-align: center; line-height: 50px;";
+                marker.innerHTML = "rapid";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "rapid",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SUPPORT: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "support";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "support",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            FORCE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "force";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "force",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            REFUGEE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "refugee";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "refugee",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            STREET: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "street";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "street",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            CAR: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "car";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "car",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            ROAD: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "road";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "road",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            CONE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "cone";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "cone",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            DIVIDER: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "divider";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "divider",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            TRAFFIC: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "traffic";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "traffic",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BOOK: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "book";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "book",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SHELF: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "shelf";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "shelf",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BED: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "bed";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "bed",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            ROOM: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "room";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "room",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BATH: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "bath";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "bath",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            CARPET: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "carpet";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "carpet",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            FLOOR: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "floor";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "floor",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            GROUND: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "ground";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "ground",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            HANGER: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "hanger";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "hanger",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            UTILITY: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "utility";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "utility",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            WATER: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "water";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "water",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            ELECTRICITY: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "electricity";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "electricity",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            GAS: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "gas";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "gas",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            INTERNET: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "internet";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "internet",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            WIRELESS: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 125px; height: 50px; background-color: yellow; color: black; border-radius: 5px; text-align: center; line-height: 50px;";
+                marker.innerHTML = "wireless";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "wireless",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            MOBILE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 100px; height: 50px; background-color: blue; color: white; border-radius: 5px; text-align: center; line-height: 50px;";
+                marker.innerHTML = "mobile";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "selector",
+                        name: "mobile",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            PHONE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 100px; height: 50px; background-color: violet; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "phone";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "phone",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BUD: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "bud";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "bud",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            TREE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "tree";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "tree",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SOUND: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "sound";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "sound",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            WEED: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "weed";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "weed",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BUSH: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "bush";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "bush",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            PLANT: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "plant";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "plant",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            FLOWER: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "flower";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "flower",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BREAKFAST: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "breakfast";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "breakfast",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            CLUB: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "club";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "club",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            PHILOSOPHY: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "philosophy";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "philosophy",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            FAIL: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "fail";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "fail",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SHOW: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "show";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "show",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            GOD: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "god";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "god",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            CULTURE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "culture";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "culture",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            REALITY: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "reality";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "reality",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            TELEVISION: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "television";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "television",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SOFA: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "sofa";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "sofa",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            COUCH: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "couch";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "couch",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BOOK: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "book";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "book",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SAFE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "safe";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "safe",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            NIGGER: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "nigger";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "nigger",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            NIGGAR: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "niggar";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "niggar",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            DANGER: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "danger";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "danger",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BASTION: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "bastion";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "bastion",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            FREEDOM: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "freedom";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "freedom",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SPEECH: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "speech";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "speech",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            OF: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "of";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-infinite",
+                        name: "of",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            NO: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "no";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "no",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            YES: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "yes";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "yes",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            WHARF: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "wharf";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "wharf",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SKYSCRAPER: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "skyscraper";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "skyscraper",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BUILDING: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "building";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "building",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            DRIVE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "drive";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "drive",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            WOOD: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "wood";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "wood",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            RANGE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "range";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "range",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            DIVERSE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "diverse";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "diverse",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            NEIGHBORHOOD: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "neighborhood";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "neighborhood",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            NEIGHBOR: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "neighbor";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "neighbor",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            HOOD: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "hood";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "hood",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            DOCK: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "dock";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "dock",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BAY: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "bay";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "bay",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BRIDGE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "bridge";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "bridge",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SQUARE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "square";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "square",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            PARIS: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "Paris";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "Paris",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            MONTREAL: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "Montreal";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "Montreal",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BRAZZAVILLE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "Brazzaville";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "Brazzaville",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            LONDON: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "London";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "London",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            CAMBRIDGE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "Cambridge";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "Cambridge",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            "SILVER SPRING": function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "Silver Spring";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "Silver Spring",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            GROUP: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "group";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "group",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            CAPITAL: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "capital";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "capital",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            DEVELOPMENT: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "development";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "development",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            DECADE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "decade";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "decade",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            RETAIL: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "retail";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "retail",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            HATE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "hate";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "hate",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            CRIME: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "crime";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "crime",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            HILARIOUS: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "hilarious";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "hilarious",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            COON: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "coon";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "coon",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            DUNE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "dune";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "dune",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SAND: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "sand";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "sand",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            FUCK: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "fuck";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "fuck",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SITUATION: function(){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "situation";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "situation",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            MASTURBATE: function(){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "masturbate";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "masturbate",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            CRY: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "cry";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "cry",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SEX: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "sex";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "sex",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            DO: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "do";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "do",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            TEAR: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "tear";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "tear",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            FIRE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "fire";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "fire",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            HELLO: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "hello";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "selector",
+                        name: "hello",
+                        element: marker,
+                        index: data.index
+                    });
+                    //console.log(self.stack.STREAM);
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            WORLD: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "world";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "world",
+                        element: marker,
+                        index: data.index
+                    });
+                    //console.log(self.stack.STREAM);
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            SPECIAL: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "special";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "selector",
+                        name: "special",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            WEDDING: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "wedding";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "wedding",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            MARKET: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "market";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "market",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            PLACE: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "place";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "place",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            IDEA: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "idea";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "idea",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            MARKETPLACE: function(){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "marketplace";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "marketplace",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            RUN: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "run";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "run",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            FAR: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "far";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "selector",
+                        name: "far",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            FAST: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "fast";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "fast",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            FURIOUS: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "furious";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "furious",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            BLACK: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "black";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "effector-finite",
+                        name: "black",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+            WOMAN: function(data){
+                let self = this;
+                //console.log(`[LPARSER] BRING`);
+
+                let marker = document.createElement("div")
+                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                marker.innerHTML = "woman";
+
+                if(data.code==0){
+                    self.stack.STREAM.push({
+                        type: "object-subject",
+                        name: "woman",
+                        element: marker,
+                        index: data.index
+                    });
+                }
+                else if(data.code==1){
+                    console.log(' execute bring (core delivery) functionality');
+                }
+            },
+
         },
         execute: function(stream){
             let self = this;
@@ -1311,9 +4315,10 @@ function Lyoko(){
 
             let shiftValue = self.dictionary.stack.PHRASE.length;
 
-            let j = self.dictionary.stack.PHRASE.length;
+            console.log(self.dictionary.stack.PHRASE);// should be 0 at this point in the program
+            let j = self.dictionary.stack.PHRASE.length;  // j = 0;
             for(;j<self.dictionary.stack.SENTENCE.length; j++){// store the locations of the sentence endings (periods/full stops)
-                breakpoints.push(self.dictionary.stack.SENTENCE[j].index);
+                breakpoints.push(self.dictionary.stack.SENTENCE[j].index); // in the comb funciton above whenever a period is located the index of the term after which it is located is stored as well, ie.e. the period's location in the the sentence
             }
 
             for(let h=0; h<breakpoints.length; h++){
@@ -1331,11 +4336,12 @@ function Lyoko(){
                     }*/
                     if(self.dictionary.stack.PHRASE.length==h+shiftValue){
                         console.log(`h: ${h}`);
-                        self.dictionary.stack.PHRASE.push([]);
+                        self.dictionary.stack.PHRASE.push([]);  //dtart of a new phrase
                     }
                     self.dictionary.stack.PHRASE[h+shiftValue].push(parseStream[l]);
                     l++;
                 }
+                self.dictionary.stack.PHRASE[h+shiftValue].push(parseStream[l]);
             }
 
             console.log("----phrases----");
@@ -1496,6 +4502,8 @@ document.addEventListener("DOMContentLoaded", function(){
 
         let parseList = session.lexer(speech); // generate the set of objects (words) from the plain text provided by the user/developer
         let parseStream = session.parser(parseList);
+        //console.log("parseSTREAM::::::");
+      //  console.log(parseStream);
         session.execute(parseStream);
     });
 });
