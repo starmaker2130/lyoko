@@ -97,7 +97,15 @@ function Lyoko(){
                 }
                 self.dictionary.stack.SENTENCE.push({
                     type: "environment",
-                    name: "pARk",
+                    name: "pARk-"+data.index,
+                    index: data.index
+                });
+            }
+
+            if(count.includes(punctuation[3])) { // if there is a question mark in the count array then "count" a query and add this structure to the core dictionary stack
+                self.dictionary.stack.SENTENCE.push({
+                    type: "environment",
+                    name: "pARk-query-"+data.index,
                     index: data.index
                 });
             }
@@ -120,6 +128,9 @@ function Lyoko(){
 
             },
             stack: {
+                SESSIONMANAGER: {
+                    connection: null
+                },
                 ENVIRONMENT: null,
                 SUBJECTOBJECTS: null,
                 OBJECTSUBJECTS: null,
@@ -488,7 +499,7 @@ function Lyoko(){
                                 ]
                             },
                             "ALSO" : {
-                                type: "selector",
+                                type: "selector-infinite",
                                 traditionalType: "adverb",
                                 definition: [
                                     {
@@ -1278,7 +1289,7 @@ function Lyoko(){
                                 definition: []
                             },
                             "HELLO" : {
-                                type: "selector",
+                                type: "selector-finite",
                                 traditionalType: "noun",
                                 definition: []
                             },
@@ -2633,7 +2644,7 @@ function Lyoko(){
 
                 if(data.code==0){
                     self.stack.STREAM.push({
-                        type: "selector",
+                        type: "selector-finite",
                         name: "mobile",
                         element: marker,
                         index: data.index
@@ -4033,7 +4044,7 @@ function Lyoko(){
 
                 if(data.code==0){
                     self.stack.STREAM.push({
-                        type: "selector",
+                        type: "selector-finite",
                         name: "hello",
                         element: marker,
                         index: data.index
@@ -4075,7 +4086,7 @@ function Lyoko(){
 
                 if(data.code==0){
                     self.stack.STREAM.push({
-                        type: "selector",
+                        type: "selector-finite",
                         name: "special",
                         element: marker,
                         index: data.index
@@ -4165,7 +4176,7 @@ function Lyoko(){
                     console.log(' execute bring (core delivery) functionality');
                 }
             },
-            MARKETPLACE: function(){
+            MARKETPLACE: function(data){
                 let self = this;
                 //console.log(`[LPARSER] BRING`);
 
@@ -4215,7 +4226,7 @@ function Lyoko(){
 
                 if(data.code==0){
                     self.stack.STREAM.push({
-                        type: "selector",
+                        type: "selector-infinite",
                         name: "far",
                         element: marker,
                         index: data.index
@@ -4307,6 +4318,33 @@ function Lyoko(){
             },
 
         },
+        closeWindow: function(){
+            window.close();
+        },
+        start: async function(){
+            let self = this;
+            if(self.dictionary.stack.SESSIONMANAGER.connection==null){
+                self.dictionary.stack.SESSIONMANAGER.connection = io.connect(location.host);
+                self.dictionary.stack.SESSIONMANAGER.connection.emit("CLIENTupdateLyokoSessionSERVER", {status: true, request: "new", target: "default"});
+                self.dictionary.stack.SESSIONMANAGER.connection.on("SERVERdenyUnauthorizedAccessCLIENT", function(data){
+                    if(data.status){
+                        console.log(data.code);
+                        console.log(data.message);
+                        let countClock = 5;
+                        console.log(`closing window in ${countClock}...`)
+                        let countDown = setInterval(function(){
+                            console.log(`${countClock}...`);
+                            if(countClock==0){
+                                clearInterval(countDown);
+                            }
+                            countClock--;
+                        }, 1000);
+                    }
+                })
+                return true;
+            }
+            return false;
+        },
         execute: function(stream){
             let self = this;
             let parseStream = stream || self.dictionary.stack.STREAM;
@@ -4327,7 +4365,7 @@ function Lyoko(){
                     l = 0;
                 }
                 else{
-                    l = breakpoints[h-1];
+                    l = breakpoints[h-1]+1;// the term just after the previous breakpoint term so as to avoid "bleeding" into the enxt sentence
                 }
 
                 while(l<breakpoints[h]){
@@ -4389,7 +4427,7 @@ function Lyoko(){
                         document.getElementById("atown-output-container").appendChild(phraseContainer);
                     }
 
-                    if(phrases[m][n].element!=null){    // if there is an element associated witht his term add it to the ATOWN output
+                    if(phrases[m][n].element!=null){    // if there is an element associated with txhis term add it to the ATOWN output
                         document.getElementById(`phrase-container-${m}`).appendChild(phrases[m][n].element);
                     }
                     else if(phrases[m][n].element==null){
@@ -4461,8 +4499,42 @@ function Lyoko(){
             }
 
             console.log("------semantics-------");
+            /*the semantics are additive and are continually processed each time a sentence is added by the user...
+            for now this results in redundant data displays but eventually sentence/word weights may change in situ as a conversation progresses
+            and the machine modifies its prior interpretations in realtime, just as people do in conversation */
+
             console.log(self.dictionary.stack.SEMANTICS);
+/* the stream is constantly refreshed every time the user enters a new query, i.e. takes a turn speaking in the conversation, the stream represents the current unprocessed information being handed to the machine by the user/developer */
+            console.log(self.dictionary.stack.STREAM);
+/* the phrase is additive and continualy builds on the sentences written by the user/developer
+            console.log(self.dictionary.stack.PHRASE);
+            */
             self.dictionary.stack.STREAM = [];
+            if(self.dictionary.stack.SESSIONMANAGER.connection==null){
+                self.start().then(function(){
+                    self.dictionary.stack.SESSIONMANAGER.connection.emit("CLIENTupdatePhraseAndSemanticAnalysisSERVER", {status: true, request: "addphrase", target: "default", semantics: self.dictionary.stack.SEMANTICS, phrase: self.dictionary.stack.PHRASE});
+                });
+            }
+            else{
+                self.dictionary.stack.SESSIONMANAGER.connection.emit("CLIENTupdatePhraseAndSemanticAnalysisSERVER", {status: true, request: "addphrase", target: "default", semantics: self.dictionary.stack.SEMANTICS, phrase: self.dictionary.stack.PHRASE});
+            }
+
+            /*
+            [DONE] send SEMANTICS and PHRASE data server side to an object that updates and analyzes these values in realtime
+            [DONE] output the data and appropriate analyses to the server console
+            [C] set up a broadcaster that sends out the conversation data to any viewer open to listen to it
+            [D] place the object decomposition visualizer (that output box) into its own page
+            [E] create a page for viewing the conversation histogram data, i.e. what terms are being used, how often terms are being used, the dictionary definitions of the terms used, the relationship between terms, etc.
+            [F] start developing an ARIA intelligent agent response bank that participates in the Lyoko production with the user/developer
+            [G] create a page for viewing the ARIA responses
+
+
+            */
+
+
+
+
+
 
             /*
                 TODO:
@@ -4482,6 +4554,7 @@ function Lyoko(){
 
 document.addEventListener("DOMContentLoaded", function(){
     var session = Lyoko();
+    session.start();
 
     document.getElementById("submit-terminal-input-button").addEventListener("click", function(){
         let speechElement = document.getElementById("terminal-input-container");

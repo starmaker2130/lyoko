@@ -105,6 +105,17 @@ app.get('/terminal', function(req, res){
     res.render('terminal.html',{root: dir[0]});
 });
 
+
+app.get('/output', function(req, res){
+    var result = new WhichBrowser(req.headers);
+    console.log(result.toString());
+    console.log(`~~~~~~~~~~~~~~~~~~~\n         LYOKO OUTPUT VIEWER \n~~~~~~~~~~~~~~~~~~~\n 6.11.19 | 20904     \n ~~~~~~~~~~~~~~~~~~~`);
+
+    res.render('output.html',{
+        root: dir[0]
+    });
+});
+
 /*boards*/
 
 app.get('/grio', function(req, res){
@@ -230,6 +241,21 @@ var SNACKSHACK = {
     },
 };
 
+var terminalOutputViewers = [];
+var terminals = [];
+
+function broadcastRequestToClients(request, origin, semantics, phrase){
+    if(terminalOutputViewers.length==0){
+        origin.emit("SERVERdenyUnauthorizedAccessCLIENT", {status: true, code: "missing output", message: "please open a terminal output viewer first"});
+    }
+    else{
+        for(var w=0; w<terminalOutputViewers.length; w++){
+            (function(){
+                terminalOutputViewers[w].pointer.emit("BROADCASTupdateLyokoSessionRESULT", {status: true, request: request, semantics: semantics, phrase: phrase, target: "default", hostID: terminalOutputViewers[w].pointer.id});
+            })();
+        }
+    }
+}
 
 io.sockets.on('connection', function(socket){
     console.log('client connected.');
@@ -350,6 +376,16 @@ io.sockets.on('connection', function(socket){
         }
     });
 
+    socket.on("CLIENTconnectOutputViewerToTerminalSERVER", function(data){
+        if(data.status){
+            if(terminals.length==0){
+                socket.emit("SERVERopenNewTerminalForViewerCLIENT", {status: true});
+            }
+            terminalOutputViewers.push({pointer: socket});
+            console.log(terminalOutputViewers);
+        }
+    });
+
     socket.on("CLIENTconnectHandToDroneSERVER", function(data){
         if(data.status){
             SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV = {
@@ -454,6 +490,47 @@ io.sockets.on('connection', function(socket){
                     }
                     console.log(`remain still...\ndrone set to hover.`);
                     break;
+            }
+        }
+    });
+
+    socket.on("CLIENTupdateLyokoSessionSERVER", function(data){
+        console.log("[function called] xxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        console.log("[function  start] CLIENT -- update lyoko session --> SERVER");
+        if(data.status){
+            let target = data.target;
+            let request = data.request;
+            console.log(`[function branch] ---------------------------`);
+            console.log(`[function branch] Requesting "${request}" mode for ${target}`);
+            console.log(`[function branch] ---------------------------`);
+            console.log(`[ function  end ] xxxxxxxxxxxxxxxxxxxxxxxxxxx`);
+            if(request=="new"||request=="addphrase"){
+                broadcastRequestToClients(request, socket, null, null);
+            }
+        }
+    });
+
+    socket.on("CLIENTupdatePhraseAndSemanticAnalysisSERVER", function(data){
+        console.log("[function called] xxxxxxxxxxxxxxxxxxxxxxxxxxx");
+        console.log("[function  start] CLIENT -- update phrase and semantic analysis --> SERVER");
+        if(data.status){
+            let rawSemanticInput = data.semantics;
+            let rawPhraseInput = data.phrase;
+            let target = data.target;
+            let request = data.request;
+
+            console.log(`[function branch] ---------------------------`);
+            console.log(`[function branch]        semantics`);
+            console.log(`[function branch] ---------------------------`);
+            console.log(rawSemanticInput);
+            console.log(`[function branch] ---------------------------`);
+            console.log(`[function branch]         phrases`);
+            console.log(`[function branch] ---------------------------`);
+            console.log(rawPhraseInput);
+            console.log(`[function branch] ---------------------------`);
+            console.log(`[ function  end ] xxxxxxxxxxxxxxxxxxxxxxxxxxx`);
+            if(request=="new"||request=="addphrase"){
+                broadcastRequestToClients(request, socket, rawSemanticInput, rawPhraseInput);
             }
         }
     });

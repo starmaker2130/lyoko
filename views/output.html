@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Output Viewer for Lyoko Terminal</title>
+    <script src="../js/socket.io.js"></script>
+    <script>
+        var sessionManager = {
+            connection:  null,
+            abbrev: function(){
+                return {
+                    hov: {
+                        ENGLISH: {
+                            HELLO: function(code){
+                                let self = this;
+                                //console.log(`[LPARSER] BRING`);
+
+                                let marker = document.createElement("div")
+                                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                                marker.innerHTML = "hello";
+
+                                if(code==0){
+                                    return marker;
+                                    //console.log(self.stack.STREAM);
+                                }
+                                else if(data.code==1){
+                                    console.log(' execute bring (core delivery) functionality');
+                                }
+                            },
+                            WORLD: function(code){
+                                let self = this;
+                                //console.log(`[LPARSER] BRING`);
+
+                                let marker = document.createElement("div")
+                                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                                marker.innerHTML = "world";
+
+                                if(code==0){
+                                    return marker;
+                                    //console.log(self.stack.STREAM);
+                                }
+                                else if(data.code==1){
+                                    console.log(' execute bring (core delivery) functionality');
+                                }
+                            },
+                            HOW: function(code){
+                                let self = this;
+                                //console.log(`[LPARSER] BRING`);
+
+                                let marker = document.createElement("div")
+                                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                                marker.innerHTML = "how";
+
+                                if(code==0){
+                                    return marker;
+                                    //console.log(self.stack.STREAM);
+                                }
+                                else if(data.code==1){
+                                    console.log(' execute bring (core delivery) functionality');
+                                }
+                            },
+                            YOU: function(code){
+                                let self = this;
+                                self["HYPERREALITY-YOU"](code);
+                            },
+                            "HYPERREALITY-YOU" : function(code){
+                                let self = this;
+                                //console.log(`[LPARSER] YOU`);
+
+                                let marker = document.createElement("div")
+                                marker.style = "width: 50px; height: 50px; background-color: yellow; color: black; border-radius: 50%; text-align: center; line-height: 50px;";
+                                marker.innerHTML = "YOU";
+
+                                if(code==0){
+                                    return marker;
+                                }
+                                else if(data.code==1){
+                                    console.log(' execute you (core identity) functionality');
+                                }
+                            },
+                            WORLD: function(code){
+                                let self = this;
+                                //console.log(`[LPARSER] BRING`);
+
+                                let marker = document.createElement("div")
+                                marker.style = "width: 50px; height: 50px; background-color: red; color: white; border-radius: 50%; text-align: center; line-height: 50px;";
+                                marker.innerHTML = "world";
+
+                                if(code==0){
+                                    return marker;
+                                    //console.log(self.stack.STREAM);
+                                }
+                                else if(data.code==1){
+                                    console.log(' execute bring (core delivery) functionality');
+                                }
+                            },
+                        },
+                        FRENCH: {
+                        },
+                        MBOCHI: {
+                        },
+                        LARI: {
+                        }
+                    }
+                }
+            }
+        };
+
+        document.addEventListener("DOMContentLoaded", function(){
+            sessionManager.connection = io.connect(location.host);
+            sessionManager.connection.emit("CLIENTconnectOutputViewerToTerminalSERVER", {status: true});
+
+            sessionManager.connection.on("BROADCASTupdateLyokoSessionRESULT", function(data){
+                let dict = sessionManager.abbrev();
+
+                if(data.status){
+                    let header = data.request;
+                    let signal = "";
+                    let phrase = data.phrase;
+
+                    if(data.target=="default"){
+                        signal = "atown-output-container";
+                    }
+                    else{
+                        signal = data.target;
+                    }
+                    if(header=="new"){
+                        let newSession = document.createElement("div");
+
+                        newSession.setAttribute("id", signal);
+                        newSession.setAttribute("class", "session-outputs-container");
+
+                        document.getElementById("main-app-container").append(newSession);
+                    }
+                    else if(header=="addphrase"){
+                        let newPhrase = document.createElement("div");
+
+                        newPhrase.setAttribute("id", `phrase`);
+                        newPhrase.setAttribute("class", "phrase-output-container");
+
+                        for(let m=0;m<phrase.length;m++){
+                            if(m!=phrase.length-1){
+                                continue;
+                            }
+                            else{
+                                for(let n = 0; n<phrase[m].length; n++){
+                                    let lexType = phrase[m][n].type;
+                                  //console.log(self.dictionary.stack.SEMANTICS[m]);
+                                /* add phrase elements to output */
+                                    if(n==0){   //add phrase container at the start of a new sentence
+                                        var phraseContainer = document.createElement("div");
+                                        phraseContainer.style = "display: inline-block; width: 275px; height: 150px; border-radius: 15px; padding: 2%; margin: 1% auto; cursor: pointer; background-color: aquamarine; color: white;";
+                                        phraseContainer.setAttribute("id", `phrase-container-${m}`);
+                                        document.getElementById(signal).appendChild(phraseContainer);
+                                    }
+
+                                    if(phrase[m][n].element!=null){    // if there is an element associated with txhis term add it to the ATOWN output
+                                        let dictQuery = phrase[m][n].name.toUpperCase();
+                                        console.log(dictQuery);
+                                        console.log(dict);
+                                        console.log(dict.hov.ENGLISH);
+                                        phrase[m][n].element = dict.hov.ENGLISH[dictQuery](0);
+                                        document.getElementById(`phrase-container-${m}`).appendChild(phrase[m][n].element);
+                                    }
+                                    else if(phrase[m][n].element==null){
+                                        if(lexType==undefined||lexType==null||lexType=="undefined"){
+                                            let ref = dict.hov.ENGLISH[dictQuery](0);
+                                            console.log(`] unknown lex type: ${lexType}`);
+                                            lexType = ref.type;
+                                            console.log(lexType);
+                                        }
+                                        if(lexType == "object-subject"){
+                                            let object = document.createElement("div");
+                                            let objName = phrase[m][n].name;
+                                            object.style= "width: 50px; height: 50px; border-radius: 50%; text-align: center; line-height: 50px; background-color: white; color: black;"
+                                            object.classList.add("object-subject-node");
+                                            object.setAttribute("id", `term-${m}-${n}-${objName}`);
+
+                                            document.getElementById(`phrase-container-${m}`).appendChild(object);
+                                            document.getElementById(`term-${m}-${n}-${objName}`).append(objName);
+                                        }
+                                    }
+                                    document.getElementById(signal).append(newPhrase);
+                                }
+                            }
+
+                        }
+                    }
+                }
+            });
+
+            sessionManager.connection.on("SERVERopenNewTerminalForViewerCLIENT", function(data){
+                if(data.status){
+                    window.open("./terminal","_blank");
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="main-app-container">
+
+    </div>
+</body>
+</html>
