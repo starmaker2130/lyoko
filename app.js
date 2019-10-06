@@ -41,14 +41,86 @@ var config = {
 var deviceType = 'unknown';
 let dir = config.DIRECTORY;
 
+var terminalOutputViewers = [];
+var terminals = [];
+var objectsInSceneHandler = {
+    points: [],
+    adding: false,
+    saveLastVertex: false,
+    gestureInterval: null,
+    starter: null,
+    webcam: null,
+    objectList: [],
+    build: {
+        markup: ''
+    }
+};
+
+var io = require('socket.io').listen(app.listen(config.PORT, function(){
+    console.log('connecting \n . \n .. \n ... \n .... \n ..... \n ------------------------------------------');
+    console.log('    HOUSE OF VENUS, BENEFIT CORPORATION \n PUBLIC AUGMENTED REALITY KINECTOME Draft Serialization v 0.5.0 ');
+    console.log('------------------------------------------');
+    console.log(`[0] listening on port ${config.PORT}`);
+    console.log('------------------------------------------');
+
+}));
+
+var SNACKSHACK = {
+    type: 'DecentralizedImmersiveApplication',
+    ATOWN: {
+        ENVIRONMENT: {
+            HyperRealSpace: {
+                Boundary: {
+                    spline: null,
+                    origin: {
+                        latitude: null,
+                        longitude: null,
+                    },
+                    zips: [
+
+                    ],
+                    area: 0
+                }
+            },
+            LedgerSpace: {
+                capacity: 1024, //GB, i.e. 1 TB
+                upperBound : {
+                    alpha: 9, //how many full time ARias should be committed to this DIA running at maximum capacity and processing power load?
+                    beta: 1024, //how much full time cARd traffic should be allotted to this DIA running at maximum capacity and processing power load (recommended 1GB per cARd for this)?
+                }
+            },
+            Community: {
+                Members: {
+
+                },
+            }
+        },
+        OBJECTSUBJECTS: {
+
+        },
+        SUBJECTOBJECTS: {
+            Views: {
+
+            }
+        },
+        SELECTORS: {
+
+        },
+        EFFECTORS: {
+            GRIO: {
+                type: 'GeneralResponseInputOutput',
+                connect: function(){
+                    console.log(' ~~~~~~~~~~~ \n GRIO Controller linked to SNACK SHACK DIA');
+                },
+                select: function(option){
+
+                }
+            }
+        }
+    },
+};
+
 app.engine('html', require('ejs').renderFile);
-
-/*
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-
-*/
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
@@ -69,6 +141,22 @@ app.get('/', function(req, res){
 
     res.render('snackshack.html',{root: dir[0]});
 });
+
+app.get("/treehouse", function(req, res){
+  var result = new WhichBrowser(req.headers);
+  console.log(result.toString());
+  console.log("----------------------------------");
+  console.log("----------------------------------");
+  console.log("--------- HOUSE OF VENUS ---------");
+  console.log("-- TreeHouse Distributed Ledger --");
+  console.log("--         version 0.0.1        --");
+  console.log("----------------------------------");
+  console.log("----------------------------------");
+  console.log("--  hand visualizer connected   --");
+
+  res.render("hand_sample.html", {root: dir[0]});
+});
+
 
 app.get("/hand", function(req, res){
   var result = new WhichBrowser(req.headers);
@@ -104,7 +192,6 @@ app.get('/terminal', function(req, res){
 
     res.render('terminal.html',{root: dir[0]});
 });
-
 
 app.get('/output', function(req, res){
     var result = new WhichBrowser(req.headers);
@@ -176,86 +263,6 @@ app.get('/uploads/:upload_id', function(req, res){
     var upload_id = req.params.upload_id;
     res.sendFile(upload_id, {root: dir[9]});
 });
-
-var io = require('socket.io').listen(app.listen(config.PORT, function(){
-    console.log('connecting \n . \n .. \n ... \n .... \n ..... \n ------------------------------------------');
-    console.log('    HOUSE OF VENUS, BENEFIT CORPORATION \n PUBLIC AUGMENTED REALITY KINECTOME Draft Serialization v 0.5.0 ');
-    console.log('------------------------------------------');
-    console.log(`[0] listening on port ${config.PORT}`);
-    console.log('------------------------------------------');
-
-}));
-
-var SNACKSHACK = {
-    type: 'DecentralizedImmersiveApplication',
-    ATOWN: {
-        ENVIRONMENT: {
-            HyperRealSpace: {
-                Boundary: {
-                    spline: null,
-                    origin: {
-                        latitude: null,
-                        longitude: null,
-                    },
-                    zips: [
-
-                    ],
-                    area: 0
-                }
-            },
-            LedgerSpace: {
-                capacity: 1024, //GB, i.e. 1 TB
-                upperBound : {
-                    alpha: 9, //how many full time ARias should be committed to this DIA running at maximum capacity and processing power load?
-                    beta: 1024, //how much full time cARd traffic should be allotted to this DIA running at maximum capacity and processing power load (recommended 1GB per cARd for this)?
-                }
-            },
-            Community: {
-                Members: {
-
-                },
-            }
-        },
-        OBJECTSUBJECTS: {
-
-        },
-        SUBJECTOBJECTS: {
-            Views: {
-
-            }
-        },
-        SELECTORS: {
-
-        },
-        EFFECTORS: {
-            GRIO: {
-                type: 'GeneralResponseInputOutput',
-                connect: function(){
-                    console.log(' ~~~~~~~~~~~ \n GRIO Controller linked to SNACK SHACK DIA');
-                },
-                select: function(option){
-
-                }
-            }
-        }
-    },
-};
-
-var terminalOutputViewers = [];
-var terminals = [];
-
-function broadcastRequestToClients(request, origin, semantics, phrase){
-    if(terminalOutputViewers.length==0){
-        origin.emit("SERVERdenyUnauthorizedAccessCLIENT", {status: true, code: "missing output", message: "please open a terminal output viewer first"});
-    }
-    else{
-        for(var w=0; w<terminalOutputViewers.length; w++){
-            (function(){
-                terminalOutputViewers[w].pointer.emit("BROADCASTupdateLyokoSessionRESULT", {status: true, request: request, semantics: semantics, phrase: phrase, target: "default", hostID: terminalOutputViewers[w].pointer.id});
-            })();
-        }
-    }
-}
 
 io.sockets.on('connection', function(socket){
     console.log('client connected.');
@@ -540,6 +547,19 @@ io.sockets.on('connection', function(socket){
     });
 });
 
+function broadcastRequestToClients(request, origin, semantics, phrase){
+    if(terminalOutputViewers.length==0){
+        origin.emit("SERVERdenyUnauthorizedAccessCLIENT", {status: true, code: "missing output", message: "please open a terminal output viewer first"});
+    }
+    else{
+        for(var w=0; w<terminalOutputViewers.length; w++){
+            (function(){
+                terminalOutputViewers[w].pointer.emit("BROADCASTupdateLyokoSessionRESULT", {status: true, request: request, semantics: semantics, phrase: phrase, target: "default", hostID: terminalOutputViewers[w].pointer.id});
+            })();
+        }
+    }
+}
+
 function compileObjectMarkup(item, markup){ //, experienceBuilder
     var objectMarkup = markup;
     var i = item;
@@ -622,19 +642,6 @@ function buildUserARExperience(){   //experienceBuilder
 
     return markup;
 }
-
-var objectsInSceneHandler = {
-    points: [],
-    adding: false,
-    saveLastVertex: false,
-    gestureInterval: null,
-    starter: null,
-    webcam: null,
-    objectList: [],
-    build: {
-        markup: ''
-    }
-};
 
 function landmarkTrackingTest(source){
     var channel = source;
