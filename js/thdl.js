@@ -197,36 +197,36 @@ Leap.loop({background: true}, {
 // all units in mm
 
 var initScene = function () {
-    window.scene = new THREE.Scene();
-    window.renderer = new THREE.WebGLRenderer({
-      alpha: true
-    });
-    window.renderer.setClearColor(0x000000, 0);
-    window.renderer.setSize(window.innerWidth, window.innerHeight);
-    window.renderer.domElement.style.position = 'fixed';
-    window.renderer.domElement.style.top = 0;
-    window.renderer.domElement.style.left = 0;
-    window.renderer.domElement.style.width = '100%';
-    window.renderer.domElement.style.height = '100%';
-    document.body.appendChild(window.renderer.domElement);
-    var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
-    directionalLight.position.set( 0, 0.5, 1 );
-    window.scene.add(directionalLight);
-    window.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-    window.camera.position.fromArray([0, 100, 500]);
-    window.camera.lookAt(new THREE.Vector3(0, 160, 0));
-    window.addEventListener('resize', function () {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.render(scene, camera);
-    }, false);
-    scene.add(camera);
-    renderer.render(scene, camera);
+        window.scene = new THREE.Scene();
+        window.renderer = new THREE.WebGLRenderer({
+          alpha: true
+        });
+        window.renderer.setClearColor(0x000000, 0);
+        window.renderer.setSize(window.innerWidth, window.innerHeight);
+        window.renderer.domElement.style.position = 'fixed';
+        window.renderer.domElement.style.top = "10%";
+        window.renderer.domElement.style.left = 0;
+        window.renderer.domElement.style.width = '100%';
+        window.renderer.domElement.style.height = '90%';
+        document.body.appendChild(window.renderer.domElement);
+        var directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+        directionalLight.position.set( 0, 0.5, 1 );
+        window.scene.add(directionalLight);
+        window.camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
+        window.camera.position.fromArray([0, 100, 500]);
+        window.camera.lookAt(new THREE.Vector3(0, 160, 0));
+        window.addEventListener('resize', function () {
+          camera.aspect = window.innerWidth / window.innerHeight;
+          camera.updateProjectionMatrix();
+          renderer.setSize(window.innerWidth, window.innerHeight);
+          renderer.render(scene, camera);
+        }, false);
+        scene.add(camera);
+        renderer.render(scene, camera);
 };
 
 var colors = [0xff0000, 0x00ff00, 0x0000ff];
-  var baseBoneRotation = (new THREE.Quaternion).setFromEuler(
+var baseBoneRotation = (new THREE.Quaternion).setFromEuler(
         new THREE.Euler(Math.PI / 2, 0, 0)
 );
 
