@@ -152,7 +152,21 @@ app.get("/treehouse", function(req, res){
   console.log("--         version 0.0.1        --");
   console.log("----------------------------------");
   console.log("----------------------------------");
-  console.log("--  hand visualizer connected   --");
+  console.log("-- loading...                   --");
+  console.log("-- connected to TreeHouse       --");
+  console.log("-- hand visualizer enabled      --");
+  console.log("-- opening Lyoko Exchange...    --");
+  console.log("-- .....                        --");
+  console.log("-- ....                         --");
+  console.log("-- ...                          --");
+  console.log("-- ..                           --");
+  console.log("-- .                            --");
+  console.log("----------------------------------");
+  console.log("----------------------------------");
+  console.log("-- Ready!                       --");
+  console.log("----------------------------------");
+  console.log("----------------------------------");
+  console.log("----------------------------------");
 
   res.render("hand_sample.html", {root: dir[0]});
 });
@@ -265,7 +279,7 @@ app.get('/uploads/:upload_id', function(req, res){
 });
 
 io.sockets.on('connection', function(socket){
-    console.log('client connected.');
+    console.log(`client connected at ${socket.id}`);
     //var conn = socket;
 
     // applicationClient sockets
