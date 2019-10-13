@@ -3,6 +3,7 @@
 *   version: 0.1.0
 *   description: styling and logic for the launch page of a mixed/augmented/virtual reality experience
 */
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600,600i,700,900&display=swap');
 
 * {
     margin: 0;
@@ -42,7 +43,7 @@ body, html{
 }
 
 #instructions{
-    font-family: monospace;
+    font-family: "Titillium Web", sans-serif;
     font-size: 1.5em;
     text-align: center;
     width: 105px;
@@ -102,7 +103,7 @@ body, html{
     border: 2px white solid;
     color: white;
     text-align: center;
-    font-family: monospace;
+    font-family: "Titillium Web", sans-serif;
     font-size: 1.5em;
     line-height: 50px;
     z-index: 300;
