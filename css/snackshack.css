@@ -1,0 +1,138 @@
+/*
+*   author: patrice-morgan ongoly
+*   version: 0.1.0
+*   description: styling and logic for the launch page of a mixed/augmented/virtual reality experience
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+input[type="button"]{
+    outline: none;
+}
+
+body, html{
+    width: 100%;
+    height: 100%;
+}
+
+.entry-layer, .control-layer, .viewer-layer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.entry-layer{
+    z-index: 100;
+    background-color: black;
+    color: white;
+}
+
+.control-layer{
+    z-index: 50;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.viewer-layer{
+    z-index: 0;
+}
+
+#instructions{
+    font-family: monospace;
+    font-size: 1.5em;
+    text-align: center;
+    width: 105px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -125px 0 0 -53px;
+}
+
+#logo{
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background-image: url("../../media/img/hov.png");
+    background-size: 100% 100%;
+}
+
+#video{
+    border: 2px black solid;
+    border-radius: 10px;
+    position: absolute;
+    display: block;
+    width: 480px;
+    height: 320px;
+    top: 50%;
+    left: 50%;
+    margin: -160px auto 0 -240px;
+    transition: width 1s, height 1s, margin 1s, top 1s, left 1s;
+}
+
+#videoSource{
+    width: 150px;
+    height: 50px;
+    border-radius: 15px;
+    border: 3px white solid;
+    z-index: 99;
+    position: absolute;
+    bottom: 2%;
+    left: 2%;
+
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+#videoSource:focus{
+    outline: none;
+}
+
+.option-button{
+    display: none;
+    opacity: 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 2px white solid;
+    color: white;
+    text-align: center;
+    font-family: monospace;
+    font-size: 1.5em;
+    line-height: 50px;
+    z-index: 300;
+    position: absolute;
+    bottom: 2%;
+}
+
+#select-option-button{
+    left: 100px;
+}
+
+#prev-option-button{
+    left: 175px;
+}
+
+#next-option-button{
+    left: 250px;
+}
+
+#experience-overlay-container{
+    /*overflow: hidden;*/
+    position: absolute;
+    height: 320px;
+    width: 480px;
+    top: 50%;
+    left: 50%;
+    margin: -160px 0 0 -240px;
+    display: block;
+    z-index: 50;
+    opacity: 1.0;
+    /*background-color: rgba(255, 255, 255, 0.1);
+    transparent none;*/
+}

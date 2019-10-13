@@ -2,355 +2,16 @@
 <html>
 <head>
     <title></title>
-    <style>
-        /*  
-        *   author: patrice-morgan ongoly
-        *   version: 0.1.0
-        *   description: styling and logic for the launch page of a mixed/augmented/virtual reality experience
-        */
-
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        input[type="button"]{
-            outline: none;
-        }
-
-        body, html{
-            width: 100%;
-            height: 100%;
-        }
-
-        .entry-layer, .control-layer, .viewer-layer{
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .entry-layer{
-            z-index: 100;
-            background-color: black;
-            color: white;
-        }
-
-        .control-layer{
-            z-index: 50;
-            background-color: rgba(255, 255, 255, 0);
-        }
-
-        .viewer-layer{
-            z-index: 0;
-        }
-
-        #instructions{
-            font-family: monospace;
-            font-size: 1.5em;
-            text-align: center;
-            width: 105px;
-            height: auto;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin: -125px 0 0 -53px;
-        }
-
-        #logo{
-            width: 100px;
-            height: 100px;
-            margin: 0 auto;
-            background-image: url("../../media/img/hov.png");
-            background-size: 100% 100%;
-        }
-
-        #video{
-            border: 2px black solid;
-            border-radius: 10px;
-            position: absolute;
-            display: block;
-            width: 480px;
-            height: 320px;
-            top: 50%;
-            left: 50%;
-            margin: -160px auto 0 -240px;
-        }
-
-        #videoSource{
-            width: 150px;
-            height: 50px;
-            border-radius: 15px;
-            border: 3px white solid;
-            z-index: 99;
-            position: absolute;
-            bottom: 2%;
-            left: 2%;
-
-            background-color: rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-
-        #videoSource:focus{
-            outline: none;
-        }
-
-        .option-button{
-            display: none;
-            opacity: 0;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.4);
-            border: 2px white solid;
-            color: white;
-            text-align: center;
-            font-family: monospace;
-            font-size: 1.5em;
-            line-height: 50px;
-            z-index: 300;
-            position: absolute;
-            bottom: 2%;
-        }
-
-        #select-option-button{
-            left: 100px;
-        }
-
-        #prev-option-button{
-            left: 175px;
-        }
-
-        #next-option-button{
-            left: 250px;
-        }
-        
-        #experience-overlay-container{
-            /*overflow: hidden;*/
-            position: absolute;
-            height: 320px;
-            width: 480px;
-            top: 50%;
-            left: 50%;
-            margin: -160px 0 0 -240px;
-            display: block;
-            z-index: 50;
-            opacity: 1.0;
-            /*background-color: rgba(255, 255, 255, 0.1);
-            transparent none;*/
-        }
-
+    <link rel="stylesheet" href="../css/snackshack.css" type="text/css" />
     </style>
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../js/aframe.min.js"></script>
     <script src="../js/socket.io.js"></script>
+    <script src="../js/snackshack_fx.js"></script>
     <script>
-        /*"use strict";
-        /*eslint no-undef: "error"*/
-        /*eslint-env node*/
-        /*global document, window, navigator*/
-        /*eslint no-console: ["error", { allow: ["log"] }] */
-        /*eslint no-unused-vars: "error"*/
-
-        /* github edition */
-        var video, videoSelect;
-        
-        function UserChannel(socket){
-            self = this;
-            this.socket = {
-                obj: socket,// /*0*/ add time stamp instead
-                print: function(){
-                    console.log(self.socket.obj)
-                }
-            }
-        }
-
-        function gotDevices(deviceInfos) {
-            videoSelect = document.getElementById("videoSource");
-            for (var i = 0; i !== deviceInfos.length; ++i) {
-                var deviceInfo = deviceInfos[i];
-                var option = document.createElement("option");
-                option.value = deviceInfo.deviceId;
-
-                console.log("["+i+"] "+deviceInfo.kind);
-
-                if (deviceInfo.kind === "videoinput") {
-                    option.text = deviceInfo.label || "camera " + (videoSelect.length + 1);
-                    videoSelect.appendChild(option);
-                }
-                else {
-                   // console.log("Found one other kind of source/device: ", deviceInfo);
-                }
-            }
-        }
-
-        function getStream() {
-            videoSelect = document.getElementById("videoSource");
-            //console.log(videoSelect.value);
-
-            if (window.stream) {
-               // console.log("stream flowing my guy!!!");
-                window.stream.getTracks().forEach(function(track) {
-                    track.stop();
-                });
-            }
-
-            var constraints = {
-                video: {
-                    deviceId: {exact: videoSelect.value}
-                }
-            };
-
-            navigator.mediaDevices.getUserMedia(constraints).then(gotStream).catch(handleError);
-        }
-
-        function gotStream(stream) {
-            window.stream = stream; // make stream available to console
-            video.srcObject = stream;
-            video.play();
-        }
-
-        function handleError(error) {
-            console.log("Error: ", error);
-        }
-
-        function convertCanvasToImage(canvas) {// store the result of this function in a variable that will represent the file entered in line 57 above
-            var image = new Image();
-            image.src = canvas.toDataURL("image/png");
-            return image;
-        }
-
-        var applicationClientManager = {
-            focus: 0,
-            menu: {
-                currentlyOpen: -1, //=none; 0 = add/edit object; 1 = ; 2 = code;
-            },
-            builder: {
-                orientation: null,
-                addingModel: false,
-                addModelFromSource: null,
-                scale: null
-            },
-            entity: {
-                id: "default-mask",
-                geometry: {
-                    primitive: "sphere",
-                    radius: 0.5
-                },
-                position: "0 1 -5",
-                material: "src: #floor-texture"
-            },
-            connection: null
-        };
-
-        function startWebCam(){ // starts the webcam or phone camera capture
-
-            video = document.getElementById("video");
-            videoSelect = document.querySelector("select#videoSource");
-            // Get access to the camera!
-            if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                // Not adding `{ audio: true }` since we only want video now
-               navigator.mediaDevices.enumerateDevices().then(gotDevices).then(getStream).catch(handleError);
-
-                videoSelect.onchange = getStream;
-            }
-        }
-
         document.addEventListener("DOMContentLoaded", function(){
-            console.log(`------------------------- \n SNACK SHACK \n -------------------------- \n a decentralized immersive application for autonomous delivery and late night convenience \n first published on the HOUSEOFVENUS pARk \n current version: 0.5.22`);
-            
-            applicationClientManager.connection = io.connect(location.host);
-            
-            startWebCam();
-            
-            applicationClientManager.connection.emit("requestDIAStream", {status: true, name: "SNACKSHACK"});
-            
-            applicationClientManager.connection.on("selectNewPage", function(data){
-                var x = document.getElementsByClassName("application-asset");
-                var i;
-                for (i = 0; i < x.length; i++) {
-                  x[i].object3D.visible = false;
-                }
-                
-                if(data.status){
-                    console.log(` fx] selectNewPage \n activate application assets for page ${data.page}`);
-                    
-                    let selection = parseInt(data.page, 10);
-                    
-                    var y = document.getElementsByClassName(`application-page-${selection}-asset`);
-                    var j;
-                    for(j = 0; j < y.length; j++){
-                        y[j].object3D.visible = true;
-                    }
-                }
-            });
-
-            applicationClientManager.connection.on("clearInitialVideoFeed", function(data){
-                var video = document.getElementById("video");
-                let stream = video.srcObject;
-                let tracks = stream.getTracks();
-
-                tracks.forEach(function(track) {
-                    track.stop();
-                });
-
-                video.srcObject = null;
-                //video.stop();
-                video.style.display = "none";
-            });
-
-            applicationClientManager.connection.on("restartVideoFeed", function(data){
-                getStream();
-                //video.stop();
-                video.style.display = "block";
-            });
-
-            applicationClientManager.connection.on("transitionToBuildView", function(data){
-                $("#object-type-list-container").css({
-                    display: "block"
-                }).animate({
-                    opacity: 1.0
-                }, 500, function(){
-                    $("#object-type-list-container").on("change", function(){
-                        var value = document.querySelector("select#object-type-list-container").value;
-                        console.log(value);
-                    })
-                });
-            });
-
-            applicationClientManager.connection.on("selectionMadeForDeliveryItem", function(data){
-                let selection = data.selection;
-                //let selectedPos = document.querySelector(selection).object3D.position;
-
-                if(selection=="#menu-option-0"){
-                    document.querySelector("#selected-option").object3D.position.set(-2, 2.2, -4);
-                }
-                else if(selection=="#menu-option-1"){
-                    document.querySelector("#selected-option").object3D.position.set(2, 2.2, -4);
-                }
-                document.querySelector(selection).object3D.visible = false;
-                //document.querySelector("#selected-option").object3D.position.set(selectedPos);
-                document.querySelector("#selected-option").object3D.visible = true;
-            });
-
-            applicationClientManager.connection.on("paintCanvas", function(data){
-                var arr = new Uint8ClampedArray(data.buf); //buffer
-
-                const imgData = new ImageData(
-                  arr,
-                  data.cols,
-                  data.rows
-                );
-                // set canvas dimensions
-                const canvas = document.getElementById("canvas");
-                canvas.height = data.rows;
-                canvas.width = data.cols;
-                // set image data
-                const ctx = canvas.getContext("2d");
-                ctx.putImageData(imgData, 0, 0);/**/
-            });
-        });  
+            init();
+        });
     </script>
 </head>
 <body>
@@ -365,11 +26,11 @@
             <img id="deliver-texture" src="../media/texture/deliver.png" preload="true"/>
             <img id="backwoods-texture" src="../media/texture/backwoods.png" preload="true"/>
             <img id="selected-texture" src="../media/texture/checkmark.png" preload="true" />
-            
+
             <img id="drinks-texture" src="../media/texture/drinks.png" preload="true"/>
             <img id="snacks-texture" src="../media/texture/snacks.png" preload="true"/>
             <img id="lighter-texture" src="../media/texture/lighter.png" preload="true"/>
-            
+
             <img id="yis-texture" src="../media/texture/YIS.png" preload="true"/>
             <img id="lumiere-texture" src="../media/texture/lumiere.png" preload="true"/>
             <img id="old-row-texture" src="../media/texture/hov-md.png" preload="true"/>
@@ -377,146 +38,145 @@
             <img id="krs-texture" src="../media/texture/krs.png" preload="true"/>
             <img id="earth-uncensored-texture" src="../media/texture/earth-uncovered.png" preload="true"/>
         </a-assets>
-        
+
         <!-- PAGE 0 -->
         <a-entity id="snack-shack-title-banner" class="application-page-0-asset application-asset" geometry="primitive: plane; width: 5; height: 1.5;" text="value: SNACK SHACK; width: 10; color: white; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5.5 -6" rotation="0 0 0" visible="true"></a-entity>
-        
+
         <a-entity id="snack-shack-title-label" class="application-page-0-asset application-asset" geometry="primitive: plane; width: 8; height: 1.5;" text="value: a decentralied immersive application \n for late night convenience; width: 10; color: white; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 4 -6" rotation="0 0 0" visible="true"></a-entity>
-        
+
         <!-- STREAM MENU OPTION [1] -->
         <a-entity id="stream-menu-option" class="application-page-0-asset application-asset" visible="true" geometry="primitive: sphere; radius: 0.8;" position="-2.5 2.2 -6" rotation="0 -90 0" material="src: #stream-texture;">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: stream; width: 10; color: white; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0.5" rotation="0 90 0"></a-entity>
         </a-entity>
-        
+
         <!-- DELIVER MENU OPTION [3] -->
         <a-entity id="deliver-menu-option" class="application-page-0-asset application-asset" visible="true" geometry="primitive: sphere; radius: 0.8;" position="2.5 2.2 -6" rotation="0 -90 0" material="src: #deliver-texture;">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: deliver; width: 10; color: white; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 -0.5" rotation="0 90 0"></a-entity>
         </a-entity>
-        
+
         <a-entity id="selected-option" visible="false" geometry="primitive: sphere; radius: 0.5" position="0 2.2 -4" rotation="0 90 0" material="src: #selected-texture;"></a-entity>
-        
-        
-        
+
+
+
         <!-- PAGE 1 -->
         <a-entity id="stream-menu-title" class="application-page-1-asset application-asset" geometry="primitive: plane; width: 5; height: 1.5;" text="value: STREAM; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5.5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="stream-menu-label" class="application-page-1-asset application-asset" geometry="primitive: plane; width: 8; height: 1.5;" text="value: select a channel or series; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="cinema-lumiere-option" class="application-page-1-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="-4.5 2.2 -4" rotation="0 0 0" material="src: #lumiere-texture;">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: CINEMA LUMIERE; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
+
         <a-entity id="space-option" class="application-page-1-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="0 2.2 -4" rotation="0 0 0" material="src: #yis-texture;">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: SPACE; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
+
         <a-entity id="old-row-md-option" class="application-page-1-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="4.5 2.2 -4" rotation="0 0 0" material="src: #old-row-texture;">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: OLD ROW MD; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
+
         <a-entity id="starsystem8300-option" class="application-page-1-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="0 -1.2 -4" rotation="0 0 0" material="src: #krs-texture;">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: KRS; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
-        
-        
+
+
+
         <!-- PAGE 2 -->
         <a-entity id="stream-channel-title" class="application-page-2-asset application-asset" geometry="primitive: plane; width: 5; height: 1.5;" text="value: CHANNEL; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5.5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="stream-channel-label" class="application-page-2-asset application-asset" geometry="primitive: plane; width: 8; height: 1.5;" text="value: current media description; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="stream-viewer-pane" class="application-page-2-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="4.5 -1.2 -4" rotation="0 0 0" material="src: #ss8300-texture;" visible="false">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: STARSYSTEM 8300; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
-        
-        
+
+
+
         <!-- PAGE 3 -->
         <a-entity id="deliver-menu-title" class="application-page-3-asset application-asset" geometry="primitive: plane; width: 5; height: 1.5;" text="value: DELIVER; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5.5 -5" rotation="0 0 0"  visible="false"></a-entity>
-        
+
         <a-entity id="deliver-menu-title" class="application-page-3-asset application-asset" geometry="primitive: plane; width: 8; height: 1.5;" text="value: select a category; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="drinks-menu-option" class="application-page-3-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="-4.5 2.2 -4" rotation="0 0 0" material="src: #drinks-texture; side: double;" visible="false">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: DRINKS; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
+
         <a-entity id="snacks-menu-option" class="application-page-3-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="0 2.2 -4" rotation="0 0 0" material="src: #snacks-texture; side: double;  visible="false"">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: SNACKS; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
+
         <a-entity id="lighters-menu-option" class="application-page-3-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="4.5 2.2 -4" rotation="0 0 0" material="src: #lighter-texture; side: double;" visible="false">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: 18+; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
-        
-        
+
+
+
         <!-- PAGE 4 -->
         <a-entity id="deliver-drinks-menu-title" class="application-page-4-asset application-asset" geometry="primitive: plane; width: 5; height: 1.5;" text="value: DRINKS; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5.5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="deliver-drinks-menu-label" class="application-page-4-asset application-asset" geometry="primitive: plane; width: 8; height: 1.5;" text="value: select a drink; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="iced-tea-option" class="application-page-4-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="-4.5 2.2 -4" rotation="0 0 0" material="src: #drinks-texture; side: double;" visible="false">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: ICED TEA; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
+
         <a-entity id="fruit-punch-option" class="application-page-4-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="0 2.2 -4" rotation="0 0 0" material="src: #drinks-texture; side: double;" visible="false">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: FRUIT PUNCH; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
+
         <a-entity id="half-n-half-option" class="application-page-4-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="4.5 2.2 -4" rotation="0 0 0" material="src: #drinks-texture; side: double;" visible="false">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: HALF n HALF; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
+
         <a-entity id="orange-juice-option" class="application-page-4-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="-2 -0.8 -4" rotation="0 0 0" material="src: #drinks-texture; side: double;" visible="false">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: ORANGE JUICE; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
+
         <a-entity id="water-option" class="application-page-4-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="2 -0.8 -4" rotation="0 0 0" material="src: #drinks-texture; side:double;" visible="false">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: WATER; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
-        
-        
+
+
+
         <!-- PAGE 5 -->
         <a-entity id="deliver-snacks-menu-title" class="application-page-5-asset application-asset" geometry="primitive: plane; width: 5; height: 1.5;" text="value: SNACKS; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5.5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="deliver-snacks-menu-label" class="application-page-5-asset application-asset" geometry="primitive: plane; width: 8; height: 1.5;" text="value: select a snack; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="chips-option" class="application-page-5-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="-4.5 2.2 -4" rotation="0 0 0" material="src: #drinks-texture; side: double;" visible="false">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: ICED TEA; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
+
         <a-entity id="crepes-option" class="application-page-5-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="-4.5 2.2 -4" rotation="0 0 0" material="src: #drinks-texture; side: double;" visible="false">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: ICED TEA; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
-        
-        
+
+
+
         <!-- PAGE 6 -->
         <a-entity id="deliver-18-menu-title" class="application-page-6-asset application-asset" geometry="primitive: plane; width: 5; height: 1.5;" text="value: 18+; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5.5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="deliver-18-menu-label" class="application-page-6-asset application-asset" geometry="primitive: plane; width: 8; height: 1.5;" text="value: ; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="lighters-option" class="application-page-6-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="-4.5 2.2 -4" rotation="0 0 0" material="src: #drinks-texture; side: double;" visible="false">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: DRINKS; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-        
-        
-        
+
+
+
         <!-- PAGE 7 -->
         <a-entity id="deliver-18-menu-title" class="application-page-7-asset application-asset" geometry="primitive: plane; width: 5; height: 1.5;" text="value: 18+; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5.5 -5" rotation="0 0 0" visible="false"></a-entity>
-    
-        
-        
+
+
+
         <!-- PAGE 8 -->
         <a-entity id="payment-page-title" class="application-page-8-asset application-asset" geometry="primitive: plane; width: 5; height: 1.5;" text="value: 18+; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5.5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="payment-page-label" class="application-page-8-asset application-asset" geometry="primitive: plane; width: 8; height: 1.5;" text="value: ; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="0 5 -5" rotation="0 0 0" visible="false"></a-entity>
-        
+
         <a-entity id="payment-form" class="application-page-8-asset application-asset" visible="false" geometry="primitive: plane; width: 3; height: 2;" position="-4.5 2.2 -4" rotation="0 0 0" material="src: #drinks-texture; side: double;" visible="false">
             <a-entity geometry="primitive: plane; width: 2; height: 2.5;" text="value: PAYMENT; width: 10; color: black; align: center; font: mozillavr;" material="opacity: 0; color: black;" position="-0.5 -1 0" rotation="0 0 0"></a-entity>
         </a-entity>
-
     </a-scene>
 </body>
 </html>
