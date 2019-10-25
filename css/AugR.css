@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css?family=Archivo:400,700&display=swap');/**/
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Archivo", sans-serif;
+}
+
+#main-app-container{
+  z-index: 0;
+}
+
+#connect-to-rfid-menu-button:hover, #link-to-new-rfid-menu-button:hover, #split-screen-menu-button:hover{
+    font-weight: 900;
+}
+
+#connect-to-rfid-menu-button{
+    background-image: url("../media/img/hov_ig_logo.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 3%;
+    left: 50%;
+    margin: 0 0 0 -38px !important;
+}
+
+#connect-to-rfid-menu-button:hover{
+
+}
+
+#link-to-new-rfid-menu-button{
+    background-color: rgba(127, 255, 212, 0.2);
+}
+
+#link-to-new-rfid-menu-button:hover{
+    background-color: rgba(127, 255, 212, 1.0);
+}
+
+#split-screen-menu-button{
+    background-color: rgba(0, 0, 255, 0.2);
+}
+
+#split-screen-menu-button:hover{
+    background-color: rgba(0, 0, 255, 1.0);
+}
+
+@media only screen and (min-width: 768px){
+
+    body, html{
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    #main-app-container{
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    #main-app-container{
+        /**/background-color: rgba(0, 0, 0, 0.95);
+    }
+
+    .viewer-container{
+        box-shadow: 5px 5px 5px white;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        transition: top 0.5s, left 0.5s, right 0.5s, bottom 0.5s;
+        z-index: 0;
+    }
+
+    #webcam-0-container{
+        top: 0;
+        /*margin: -240px 0 0 -320px;*/
+    }
+
+    #second-webcam-container{
+        bottom: 1%;
+        margin-left: -320px;
+    }
+
+    .menu-container{
+        position: absolute;
+        right: 0;
+        top: 10%;
+        width: 10%;
+        height: 100px;
+        border-radius: 10px 0 0 10px;
+        background-color: rgba(250, 250, 250, 0.2);
+        z-index: 50;
+    }
+
+    .menu-button{
+        border-radius: 50%;
+        width: 75px;
+        height: 75px;
+        text-align: center;
+        line-height: 75px;
+        color: white;
+        margin: 15% auto;
+        cursor: pointer;
+        transition: background-color 0.25s;
+    }
+
+    #link-status-display-container{
+        width: 300px;
+        height: 300px;
+        border-radius: 15px;
+        background-color: white;
+        color: black;
+        z-index: 100;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -150px 0 0 -150px;
+    }
+
+    #link-status-display-title-container{
+        font-size: 24px;
+        text-align: center;
+    }
+
+    #link-status-display-bar{
+        width: 0;
+        height: 100%;
+        background-color: aquamarine;
+        transition: width 3s;
+    }
+
+    #link-status-display-bar-container{
+        margin: 1% auto;
+        width: 80%;
+        height: 10%;
+        border-radius: 5px;
+        background-color: gray;
+        cursor: pointer;
+    }
+
+    #link-status-display-content-container{
+
+    }
+}
+
+@media only screen and (max-width: 768px){
+
+    body, html{
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    #main-app-container{
+        width: 100%;
+        height: 100%;
+        overflow-y: scroll;
+    }
+
+    #main-app-container{
+        /**/background-color: rgba(245, 0, 0, 0.95);
+    }
+
+    .viewer-container{
+        box-shadow: 0;
+        width: auto;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        transition: top 0.5s, left 0.5s, right 0.5s, bottom 0.5s;
+        z-index: 0;
+    }
+
+    #webcam-0-container{
+        top: 0;
+    }
+
+    #second-webcam-container{
+        bottom: 1%;
+    }
+
+    .menu-container{
+        position: absolute;
+        right: 0;
+        top: 10%;
+        width: 10%;
+        min-width: 80px;
+        height: 100px;
+        border-radius: 10px 0 0 10px;
+        background-color: rgba(255, 255, 255, 0.8);
+        z-index: 50;
+    }
+
+    .menu-button{
+        border-radius: 50%;
+        width: 75px;
+        height: 75px;
+        text-align: center;
+        line-height: 75px;
+        color: white;
+        margin: 15% auto;
+        cursor: pointer;
+        transition: background-color 0.25s;
+    }
+
+    #link-status-display-container{
+        width: 300px;
+        height: 300px;
+        border-radius: 15px;
+        background-color: white;
+        color: black;
+        z-index: 100;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin: -150px 0 0 -150px;
+    }
+
+    #link-status-display-title-container{
+        font-size: 24px;
+        text-align: center;
+    }
+
+    #link-status-display-bar{
+        width: 0;
+        height: 100%;
+        background-color: aquamarine;
+        transition: width 3s;
+    }
+
+    #link-status-display-bar-container{
+        margin: 1% auto;
+        width: 80%;
+        height: 10%;
+        border-radius: 5px;
+        background-color: gray;
+        cursor: pointer;
+    }
+}
