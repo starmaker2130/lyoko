@@ -38,7 +38,7 @@
               marginArray: [
                 -30,
                 30,
-                50,
+                30,
                 120,
                 -100,
                 50
@@ -82,70 +82,92 @@
                 //console.log(`0: ${hand.thumb.extended} 1: ${hand.indexFinger.extended} 2: ${hand.middleFinger.extended} 3: ${hand.ringFinger.extended} 4: ${hand.pinky.extended}`);
                 sessionManager.hand.position = hand.palmPosition;
                 //console.log(sessionManager.hand.position);
-                if(!(hand.thumb.extended||hand.indexFinger.extended||hand.middleFinger.extended||hand.ringFinger.extended||hand.pinky.extended)){
-                  sessionManager.fistClosed = true;
-                  let obj = objectManager;
 
-                  if(obj["drop-box-container"].marginArray[0]<hand.palmPosition[0]&&hand.palmPosition[0]<obj["drop-box-container"].marginArray[1]&&obj["drop-box-container"].marginArray[2]<hand.palmPosition[1]&&hand.palmPosition[1]<obj["drop-box-container"].marginArray[3]&&obj["drop-box-container"].marginArray[4]<hand.palmPosition[2]&&hand.palmPosition[2]<obj["drop-box-container"].marginArray[5]){
-                    console.log("in range");
-                    if(!objectManager["drop-box-container"].inGrasp){
-                      objectManager["drop-box-container"].inGrasp = true;
-                      document.getElementById(objectManager["drop-box-container"].id).setAttribute("material", "color", objectManager["drop-box-container"].graspColor);
+// range test
+
+                let obj = objectManager;
+                if(obj["drop-box-container"].marginArray[0]<hand.palmPosition[0]&&hand.palmPosition[0]<obj["drop-box-container"].marginArray[1]&&obj["drop-box-container"].marginArray[2]<hand.palmPosition[1]&&hand.palmPosition[1]<obj["drop-box-container"].marginArray[3]&&obj["drop-box-container"].marginArray[4]<hand.palmPosition[2]&&hand.palmPosition[2]<obj["drop-box-container"].marginArray[5]){
+                  console.log("in range");
+                  if(!(hand.thumb.extended||hand.indexFinger.extended||hand.middleFinger.extended||hand.ringFinger.extended||hand.pinky.extended)){
+                    sessionManager.fistClosed = true;
+                    //let obj = objectManager;
+                      if(!objectManager["drop-box-container"].inGrasp){
+                        objectManager["drop-box-container"].inGrasp = true;
+                        document.getElementById(objectManager["drop-box-container"].id).setAttribute("material", "color", objectManager["drop-box-container"].graspColor);
+                      }
                     }
-                  }
-                  else{
-                    if(objectManager["drop-box-container"].inGrasp){
-                      console.log(`box dropped at new height ${sessionManager.hand.position[2]}`);
-                      document.getElementById(objectManager["drop-box-container"].id).setAttribute("material", "color", objectManager["drop-box-container"].color);
-                      objectManager["drop-box-container"].inGrasp = false;
+                    else{
+                      if(objectManager["drop-box-container"].inGrasp){
+                        console.log(`box dropped at new height ${sessionManager.hand.position[2]}`);
+                        document.getElementById(objectManager["drop-box-container"].id).setAttribute("material", "color", objectManager["drop-box-container"].color);
+                        objectManager["drop-box-container"].inGrasp = false;
+
+                        let dropBall = setInterval(function(){
+                          if(!objectManager["drop-box-container"].inGrasp&&objectManager["drop-box-container"].posArray[1]>0.5){
+                            let spacer = objectManager["drop-box-container"].marginArray[3]-objectManager["drop-box-container"].marginArray[2];
+                            objectManager["drop-box-container"].marginArray[2] -= spacer/10;
+                            objectManager["drop-box-container"].marginArray[3] -= spacer/10;
+
+                            objectManager["drop-box-container"].posArray[1]-= 0.10;
+                            document.getElementById(objectManager["drop-box-container"].id).object3D.position.set(objectManager["drop-box-container"].posArray[0], objectManager["drop-box-container"].posArray[1], objectManager["drop-box-container"].posArray[2]);
+
+                            console.log(`move the ball on the y axis`);
+                          }
+                          else{
+                            console.log(`margin boundary lower ${obj["drop-box-container"].marginArray[2]} upper ${obj["drop-box-container"].marginArray[2]}`);
+                            clearInterval(dropBall);
+                          }
+                        }, 50);
+                      }
                     }
-                  }
-
-                  if(sessionManager.hand.lastPosition==null){
-                      sessionManager.hand.lastPosition = [];
-                      sessionManager.hand.lastPosition.push(sessionManager.hand.position[0]);
-                      sessionManager.hand.lastPosition.push(sessionManager.hand.position[1]);
-                      sessionManager.hand.lastPosition.push(sessionManager.hand.position[2]);
-                  }
-                  else{
-                    let diffs = [
-                      sessionManager.hand.lastPosition[0]-sessionManager.hand.position[0],
-                      sessionManager.hand.lastPosition[1]-sessionManager.hand.position[1],
-                      sessionManager.hand.lastPosition[2]-sessionManager.hand.position[2],
-                    ];
-
-
-                    for(var x = 0 ; x< diffs.length; x++){
-                      (function(){
-                        let tolerance = objectManager["drop-box-container"].marginArray[2*x]-objectManager["drop-box-container"].marginArray[2*x+1];
-                          if(Math.abs(diffs[x])>tolerance&&objectManager["drop-box-container"].inGrasp){
-                            let axis = [
-                              "x",
-                              "y",
-                              "z"
-                            ];
-
-                            if(Math.abs(diffs[x])>0&&x==1){
-                              let spacer = objectManager["drop-box-container"].marginArray[2*x+1]-objectManager["drop-box-container"].marginArray[2*x];
-                              objectManager["drop-box-container"].marginArray[2*x] += spacer/20;
-                              objectManager["drop-box-container"].marginArray[2*x+1] += spacer/20;
-                              objectManager["drop-box-container"].posArray[x] += 0.05;
-                              console.log(`move the ball on the ${axis[x]} axis`);
-                              console.log(`new margin | lower ${objectManager["drop-box-container"].marginArray[2]} upper ${objectManager["drop-box-container"].marginArray[3]}`);
-                              document.getElementById(objectManager["drop-box-container"].id).object3D.position.set(objectManager["drop-box-container"].posArray[0], objectManager["drop-box-container"].posArray[1], objectManager["drop-box-container"].posArray[2]);
-
-                            }
-
-                            sessionManager.hand.lastPosition[x] = sessionManager.hand.position[x];
-                          };
-                      })();
-                    }
-                  }
-
-                  //console.log(`fist closed ${hand.palmPosition[0]} ${hand.palmPosition[1]} ${hand.palmPosition[2]}`);
                 }
 
-                renderer.render(scene, camera);
+                if(sessionManager.hand.lastPosition==null){
+                    sessionManager.hand.lastPosition = [];
+                    sessionManager.hand.lastPosition.push(sessionManager.hand.position[0]);
+                    sessionManager.hand.lastPosition.push(sessionManager.hand.position[1]);
+                    sessionManager.hand.lastPosition.push(sessionManager.hand.position[2]);
+                }
+                else{
+                  let diffs = [
+                    sessionManager.hand.lastPosition[0]-sessionManager.hand.position[0],
+                    sessionManager.hand.lastPosition[1]-sessionManager.hand.position[1],
+                    sessionManager.hand.lastPosition[2]-sessionManager.hand.position[2],
+                  ];
+
+
+                  for(var x = 0 ; x< diffs.length; x++){
+                    (function(){
+                      let tolerance = objectManager["drop-box-container"].marginArray[2*x]-objectManager["drop-box-container"].marginArray[2*x+1];
+                        if(Math.abs(diffs[x])>tolerance&&objectManager["drop-box-container"].inGrasp){
+                          let axis = [
+                            "x",
+                            "y",
+                            "z"
+                          ];
+
+                          if(Math.abs(diffs[x])>0&&x==1){
+                            let spacer = objectManager["drop-box-container"].marginArray[2*x+1]-objectManager["drop-box-container"].marginArray[2*x];
+                            objectManager["drop-box-container"].marginArray[2*x] += spacer/20;
+                            objectManager["drop-box-container"].marginArray[2*x+1] += spacer/20;
+                            console.log(`move the ball on the ${axis[x]} axis`);
+                            objectManager["drop-box-container"].posArray[x] += 0.05;
+
+                            console.log(`new margin | lower ${objectManager["drop-box-container"].marginArray[2]} upper ${objectManager["drop-box-container"].marginArray[3]}`);
+                            document.getElementById(objectManager["drop-box-container"].id).object3D.position.set(objectManager["drop-box-container"].posArray[0], objectManager["drop-box-container"].posArray[1], objectManager["drop-box-container"].posArray[2]);
+
+                          }
+
+                          sessionManager.hand.lastPosition[x] = sessionManager.hand.position[x];
+                        };
+                    })();
+                  }
+                }
+
+                  //console.log(`fist closed ${hand.palmPosition[0]} ${hand.palmPosition[1]} ${hand.palmPosition[2]}`);
+
+
+              renderer.render(scene, camera);
         }})
         .use('handHold')
         .use('handEntry')
