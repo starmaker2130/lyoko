@@ -27,7 +27,7 @@ var config = {
         './media/pattern', /* 5 */
         './media/img',  /* 6 */
         './media/sounds',   /* 7 */
-        './media/model',    /* 8 */
+        './model/shuttle',    /* 8 */
         './uploads',        /* 9 */
         './drafts/docs',       /* 10 */
         './media/upload',       /* 11 */
@@ -72,6 +72,36 @@ app.get('/', function(req, res){
     res.render('augrstudio.html',{root: dir[0]});
 });
 
+app.get('/game', function(req, res){
+    var result = new WhichBrowser(req.headers);
+    console.log(result.toString());
+    if(result.isType('desktop')){
+        console.log('This is a desktop computer.');
+        deviceType = 'desktop';
+    }
+    else{
+        console.log('This is a mobile device.');
+        deviceType = 'mobile';
+    }
+
+    res.render('game.html',{root: dir[0]});
+});
+
+app.get('/shuttle', function(req, res){
+    var result = new WhichBrowser(req.headers);
+    console.log(result.toString());
+    if(result.isType('desktop')){
+        console.log('This is a desktop computer.');
+        deviceType = 'desktop';
+    }
+    else{
+        console.log('This is a mobile device.');
+        deviceType = 'mobile';
+    }
+
+    res.render('shuttle.html',{root: dir[0]});
+});
+
 app.get('/css/:stylesheet_id', function(req, res){
     let stylesheet_id = req.params.stylesheet_id;
     res.sendFile(stylesheet_id, {root: dir[1]});
@@ -107,7 +137,7 @@ app.get('/media/sounds/:sound_id', function(req, res){
     res.sendFile(sound_id, {root: dir[7]});
 });
 
-app.get('/media/model/:model_id', function(req, res){
+app.get('/model/shuttle/:model_id', function(req, res){
     var model_id = req.params.model_id;
     res.sendFile(model_id, {root: dir[8]});
 });
