@@ -449,51 +449,112 @@ io.sockets.on('connection', function(socket){
             let direction = data.direction;
             let speed = SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.speed;
             switch(direction){
+                case "land":
+                    if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "land"){
+                        console.log(`land.`);
+                        
+                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
+                            status: true,
+                            response: "land"
+                        });
+                        
+                        SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "land";
+                    }
+                break;
                 case "takeoff":
-                    if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "takeoff"/*&&SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hoverstop"*/){
-                      console.log(`takeoff.`);
-                      SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "takeoff";
+                    if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "takeoff"){
+                        /*&&SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hoverstop"*/
+                        console.log(`takeoff.`);
+                        
+                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
+                            status: true,
+                            response: "takeoff"
+                        });
+                        
+                        SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "takeoff";
                     }
                 break;
                 case "right":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "right"){
-                      console.log(`move drone right at ${speed}`);
-                      SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "right";
+                        console.log(`move drone right at ${speed}`);
+                        
+                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
+                            status: true,
+                            response: "right"
+                        });
+                        
+                        SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "right";
                     }
                 break;
                 case "left":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "left"){
                         console.log(`move drone left at ${speed}`);
+                        
+                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
+                            status: true,
+                            response: "left"
+                        });
+                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "left";
                     }
                     break;
                 case "forward":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "forward"){
                         console.log(`move drone forward at ${speed}`);
+                        
+                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
+                            status: true,
+                            response: "forward"
+                        });
+                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "forward";
                     }
                     break;
                 case "back":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "back"){
                         console.log(`move drone backward at ${speed}`);
+                        
+                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
+                            status: true,
+                            response: "back"
+                        });
+                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "back";
                     }
                     break;
                 case "up":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "up"){
                         console.log(`move drone up at ${speed}`);
+                        
+                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
+                            status: true,
+                            response: "up"
+                        });
+                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "up";
                     }
                     break;
                 case "down":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "down"){
                         console.log(`move drone down at ${speed}`);
+                        
+                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
+                            status: true,
+                            response: "down"
+                        });
+                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "down";
                     }
                     break;
                 case "hover":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hover"){
                         console.log(`drone stopped...\nset to hover.`);
+                        
+                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
+                            status: true,
+                            response: "hover"
+                        });
+                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "hover";
                     }
                     break;
@@ -501,14 +562,14 @@ io.sockets.on('connection', function(socket){
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hover"){
                         console.log(`drone stopped...\nset to hover.\nlanding in...`);
                         let countValue = 5;
-                        let countDownToLanding = setInterval(function(){
+                      /*  let countDownToLanding = setInterval(function(){
                             console.log(`${countValue}...`);
                             countValue--;
                             if(countValue==-1){
                                 clearInterval(countDownToLanding);
                                 SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "landed";
                             }
-                        }, 1000);
+                        }, 1000);*/
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "hover";
                     }
                     break;

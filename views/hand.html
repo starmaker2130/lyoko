@@ -1,6 +1,35 @@
 <html>
 <head>
     <title>Bone Hands - Leap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, html{
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        #action-container{
+            display: block;
+            width: 200px;
+            height: 75px;
+            border-radius: 10px;
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            margin-left: -100px;
+            background-color: white;
+            color: black;
+            text-align: center;
+            line-height: 75px;
+            font-size: 20px;
+            z-index: 10;
+        }
+    </style>
     <script src="./js/leap-0.6.4.js"></script>
     <script src="./js/leap-plugins-0.1.6.js"></script>
     <script src="./js/socket.io.js"></script>
@@ -45,7 +74,6 @@
                     else {
                         sessionManager.moveCount++;
                         if(sessionManager.moveCount>=5){
-                            
                             sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "right"});
                         }
                     }
@@ -133,7 +161,7 @@
                     }
                 }
 
-                if(hand.palmPosition[0]<100&&hand.palmPosition[0]>-100&&hand.palmPosition[2]<100&&hand.palmPosition[2]>15&&hand.palmPosition[1]<75&&hand.palmPosition[1]>25){
+                if(hand.palmPosition[0]<100&&hand.palmPosition[0]>-100&&hand.palmPosition[2]<100&&hand.palmPosition[2]>15&&hand.palmPosition[1]<150&&hand.palmPosition[1]>50){
                     //console.log("hover x");
                     if(sessionManager.lastMove!="hover"){
                         sessionManager.moveCount = 0;
@@ -152,6 +180,9 @@
         .use('handHold')
         .use('handEntry')
         .on('handFound', function(hand){
+            document.getElementById("main-app-container").style.backgroundColor = "yellow";
+            document.getElementById("action-container").innerHTML = "<p>on standby</p>"
+            
             hand.fingers.forEach(function (finger) {
                 var boneMeshes = [];
                 var jointMeshes = [];
@@ -183,7 +214,8 @@
                 sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "takeoff"});
 
           });
-          /*if (hand.arm){ // 2.0.3+ have arm api,
+          /*
+            if (hand.arm){ // 2.0.3+ have arm api,
             // CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded)
             var armMesh = new THREE.Mesh(
               new THREE.CylinderGeometry(1, 1, hand.arm.length, 64),
@@ -192,7 +224,8 @@
             armMesh.material.color.setHex(0xffffff);
             scene.add(armMesh);
             hand.data('armMesh', armMesh);
-          }*/
+          }
+          */
         })
         .on('handLost', function(hand){
             hand.fingers.forEach(function (finger) {
@@ -251,13 +284,13 @@
         );
 
         var sessionManager = {
-          connection: null,
-          drone: {
-            position: null,
-            currentDirection: null,
-            lastMove : "hover",
-            moveCount: 0
-          }
+            connection: null,
+            drone: {
+                position: null,
+                currentDirection: null,
+                lastMove : "hover",
+                moveCount: 0
+            }
         };
 
         document.addEventListener("DOMContentLoaded", function(){
@@ -266,6 +299,16 @@
 
             sessionManager.connection.emit("CLIENTconnectHandToDroneSERVER", {status: true});
 
+            sessionManager.connection.on("SERVERsendDroneMovementResponseToCLIENT", function(data){
+                if(data.status){
+                    //console.log(`server responded with action: ${data.response}`);
+                    document.getElementById("action-container").innerHTML(`<p>${data.reponse}</p>`);
+                    if(data.response){
+                        
+                    }
+                }
+            });
+            
             sessionManager.connection.on("SERVERhandleClientLinkRequestCLIENT", function(data){
                 let drone = data.drone;
 
