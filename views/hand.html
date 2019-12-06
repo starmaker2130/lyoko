@@ -32,18 +32,12 @@
                   });
 
                 });
-          /*      var armMesh = hand.data('armMesh');
-                armMesh.position.fromArray(hand.arm.center());
-                armMesh.setRotationFromMatrix(
-                  (new THREE.Matrix4).fromArray( hand.arm.matrix() )
-                );
-                armMesh.quaternion.multiply(baseBoneRotation);
-                armMesh.scale.x = hand.arm.width / 3; //2
-                armMesh.scale.z = hand.arm.width / 3; //4*/
-
+                
                 if(hand.palmPosition[0]>100){
-                    /*console.log("move drone right");
-                    console.log(`last move: ${sessionManager.lastMove}`);*/
+                    /*
+                    console.log("move drone right");
+                    console.log(`last move: ${sessionManager.lastMove}`);
+                    */
                     if(sessionManager.lastMove!="right"){
                         sessionManager.moveCount = 0;
                         sessionManager.lastMove = "right";
@@ -51,13 +45,16 @@
                     else {
                         sessionManager.moveCount++;
                         if(sessionManager.moveCount>=5){
+                            
                             sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "right"});
                         }
                     }
                 }
                 else if(hand.palmPosition[0]<-100){
-                    /*console.log("move drone left");
-                    console.log(`last move: ${sessionManager.lastMove}`);*/
+                    /*
+                    console.log("move drone left");
+                    console.log(`last move: ${sessionManager.lastMove}`);
+                    */
                     if(sessionManager.lastMove!="left"){
                         sessionManager.moveCount = 0;
                         sessionManager.lastMove = "left";
@@ -71,8 +68,10 @@
                 }
 
                 if(hand.palmPosition[2]>100){
-                    /*console.log("move drone back");
-                    console.log(`last move: ${sessionManager.lastMove}`);*/
+                    /*
+                    console.log("move drone back");
+                    console.log(`last move: ${sessionManager.lastMove}`);
+                    */
                     if(sessionManager.lastMove!="back"){
                         sessionManager.moveCount = 0;
                         sessionManager.lastMove = "back";
@@ -85,8 +84,10 @@
                     }
                 }
                 else if(hand.palmPosition[2]<15){
-                    /*console.log("move drone forward");
-                    console.log(`last move: ${sessionManager.lastMove}`);*/
+                    /*
+                    console.log("move drone forward");
+                    console.log(`last move: ${sessionManager.lastMove}`);
+                    */
                     if(sessionManager.lastMove!="forward"){
                         sessionManager.moveCount = 0;
                         sessionManager.lastMove = "forward";
@@ -100,8 +101,10 @@
                 }
 
                 if(hand.palmPosition[1]>150){
-                    /*console.log("move drone up");
-                    console.log(`last move: ${sessionManager.lastMove}`);*/
+                    /*
+                    console.log("move drone up");
+                    console.log(`last move: ${sessionManager.lastMove}`);
+                    */
                     if(sessionManager.lastMove!="up"){
                         sessionManager.moveCount = 0;
                         sessionManager.lastMove = "up";
@@ -114,8 +117,10 @@
                     }
                 }
                 else if(hand.palmPosition[1]<50){
-                    /*console.log("move drone down");
-                    console.log(`last move: ${sessionManager.lastMove}`);*/
+                    /*
+                    console.log("move drone down");
+                    console.log(`last move: ${sessionManager.lastMove}`);
+                    */
                     if(sessionManager.lastMove!="down"){
                         sessionManager.moveCount = 0;
                         sessionManager.lastMove = "down";
@@ -171,6 +176,7 @@
                     scene.add(jointMesh);
                     jointMeshes.push(jointMesh);
                 }
+                
                 finger.data('boneMeshes', boneMeshes);
                 finger.data('jointMeshes', jointMeshes);
 
@@ -203,9 +209,6 @@
                 boneMeshes: null
               });
             });
-          /*  var armMesh = hand.data('armMesh');
-            scene.remove(armMesh);
-            hand.data('armMesh', null);*/
 
             sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "hoverstop"});
             renderer.render(scene, camera);
@@ -270,16 +273,13 @@
                 sessionManager.drone.currentDirection = drone.heading;
 
                 console.log(sessionManager.drone);
-            })
+            });
         });
 
     </script>
 </head>
-<body>
+<body id="main-app-container">
+    <div id="action-container">no current action</div>
+    
 </body>
-
-<script>
-
-
-  </script>
 </html>

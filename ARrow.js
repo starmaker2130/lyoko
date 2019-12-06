@@ -292,6 +292,7 @@ io.sockets.on('connection', function(socket){
     //var conn = socket;
 
     // applicationClient sockets
+
     socket.on('requestDIAStream', function(data){
 
         if(data.status){
@@ -450,7 +451,7 @@ io.sockets.on('connection', function(socket){
             let speed = SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.speed;
             switch(direction){
                 case "takeoff":
-                    if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "takeoff"/*&&SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hoverstop"*/){
+                    if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "takeoff"){
                       console.log(`takeoff.`);
                       SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "takeoff";
                     }
