@@ -226,6 +226,14 @@ app.get('/output', function(req, res){
     });
 });
 
+app.get("/template", function(req, res){
+    var result = new WhichBrowser(req.headers);
+    console.log(result.toString());
+    
+    console.log("viewing template");
+    res.render("template.html", {root: dir[0]});
+});
+
 /*boards*/
 
 app.get('/grio', function(req, res){
@@ -462,8 +470,7 @@ io.sockets.on('connection', function(socket){
                     }
                 break;
                 case "takeoff":
-                    if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "takeoff"){
-                        /*&&SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hoverstop"*/
+                    if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "takeoff"&&SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hoverstop"){
                         console.log(`takeoff.`);
                         
                         socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
@@ -560,9 +567,9 @@ io.sockets.on('connection', function(socket){
                     break;
                 case "hoverstop":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hover"){
-                        console.log(`drone stopped...\nset to hover.\nlanding in...`);
-                        let countValue = 5;
-                      /*  let countDownToLanding = setInterval(function(){
+                        console.log(`drone stopped...\nset to hover.`);
+                        //let countValue = 5;
+                        /*  let countDownToLanding = setInterval(function(){
                             console.log(`${countValue}...`);
                             countValue--;
                             if(countValue==-1){
@@ -570,6 +577,7 @@ io.sockets.on('connection', function(socket){
                                 SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "landed";
                             }
                         }, 1000);*/
+                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "hover";
                     }
                     break;
