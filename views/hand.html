@@ -181,7 +181,7 @@
                     }
                     else {
                         sessionManager.moveCount++;
-                        if(sessionManager.moveCount>=5){
+                        if(sessionManager.moveCount==5){
                             sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "land"});
                         }
                     }
@@ -226,7 +226,7 @@
                 finger.data('boneMeshes', boneMeshes);
                 finger.data('jointMeshes', jointMeshes);
                 
-                if(sessionManager.drone.lastMove!="hover"){
+                if(sessionManager.drone.lastMove!="hover"&&sessionManager.drone.lastMove!="takeoff"){
                     console.log(sessionManager.drone.lastMove);
                     sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "takeoff"});
                     sessionManager.drone.lastMove = "takeoff";
@@ -279,8 +279,7 @@
             }
             
             renderer.render(scene, camera);
-        })
-        .connect();
+        }).connect();
         // all units in mm
 
         var initScene = function () {

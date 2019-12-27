@@ -65,6 +65,14 @@ var io = require('socket.io').listen(app.listen(config.PORT, function(){
 
 }));
 
+var bebop = require('node-bebop');
+var droneMovingSpeed = 5;
+var droneTurningSpeed = function(){
+    return Math.min(droneMovingSpeed*2, 100);
+};
+
+var droneController = null;
+
 var SNACKSHACK = {
     type: 'DecentralizedImmersiveApplication',
     ATOWN: {
@@ -421,7 +429,17 @@ io.sockets.on('connection', function(socket){
             SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV = {
                 type: "EulaliesVoyager",
                 connect: function(){
-                    console.log('connected to eV');
+                    droneController = bebop.createClient();
+                    
+                    droneController.connect(function(){
+                        console.log('connected to eV'); 
+                    });
+                    
+                    droneController.on('battery', function(data){
+                        console.log('-----------------');
+                        console.log(`battery: ${data}`);
+                        console.log('-----------------');
+                    });
                 },
                 move: function(direction, speed){
                     let self = this;
@@ -452,62 +470,78 @@ io.sockets.on('connection', function(socket){
             switch(direction){
                 case "takeoff":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "takeoff"){
-                      console.log(`takeoff.`);
-                      SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "takeoff";
+                        console.log(`takeoff.`);
+                        SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "takeoff";
+                        droneController.takeoff();
                     }
                 break;
                 case "right":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "right"){
-                      console.log(`move drone right at ${speed}`);
-                      SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "right";
+                        console.log(`move drone right at ${speed}`);
+                        SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "right";
+                        droneController.right(speed);
                     }
                 break;
                 case "left":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "left"){
                         console.log(`move drone left at ${speed}`);
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "left";
+                        droneController.left(speed);
                     }
                     break;
                 case "forward":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "forward"){
                         console.log(`move drone forward at ${speed}`);
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "forward";
+                        droneController.front(speed);
                     }
                     break;
                 case "back":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "back"){
                         console.log(`move drone backward at ${speed}`);
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "back";
+                        droneController.back(speed);
                     }
                     break;
                 case "up":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "up"){
                         console.log(`move drone up at ${speed}`);
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "up";
+                        droneController.up(speed);
                     }
                     break;
                 case "down":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "down"){
                         console.log(`move drone down at ${speed}`);
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "down";
+                        droneController.down(speed);
                     }
                     break;
                 case "hover":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hover"){
                         console.log(`drone stopped...\nset to hover.`);
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "hover";
+                        droneController.stop();
                     }
                     break;
                 case "hoverstop":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hover"){
+                        console.log(`drone stopped...\nset to hover indefinitely`);
+                        SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "hover";
+                        droneController.stop();
+                    }
+                    break;
+                case "land":
+                    if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "land"){
                         console.log(`drone stopped...\nset to hover.\nlanding in...`);
-                        let countValue = 5;
+                        let countValue = 3;
                         let countDownToLanding = setInterval(function(){
                             console.log(`${countValue}...`);
                             countValue--;
                             if(countValue==-1){
                                 clearInterval(countDownToLanding);
                                 SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "landed";
+                                droneController.land();
                             }
                         }, 1000);
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "hover";
@@ -517,6 +551,7 @@ io.sockets.on('connection', function(socket){
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hover"){
                         console.log(`drone instructed not to move.`);
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "hover";
+                        droneController.stop();
                     }
                     console.log(`remain still...\ndrone set to hover.`);
                     break;

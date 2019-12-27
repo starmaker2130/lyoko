@@ -1,0 +1,34 @@
+<html>
+<head>
+    <title>AugR</title>
+    <link rel="stylesheet" href="./css/AugR.css" type="text/css" />
+    <script src="./js/leap-0.6.4.js"></script>
+    <script src="./js/leap-plugins-0.1.6.js"></script>
+    <script src="./js/socket.io.js"></script>
+    <script src="./js/three.js"></script>
+    <script src="./js/aframe092.min.js"></script>
+    <!--<script src="./js/camera-browser.js"></script>
+    <script src="./js/augr-hand-tracker.js"></script>-->
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            //initScene();
+            sessionManager.connection = io.connect(location.host);
+        });
+    </script>
+</head>
+<body>
+</body>
+<a-scene embbeded background="transparent: true;" style="width: 100%; height: 100%; display: block; position: absolute; top: 50%; left: 50%; margin: -250px 0 0 -250px; z-index: 50;">
+    <a-entity geometry="primitive: sphere; radius: 0.5" id="drop-box-container" position="0 0 -3" rotation="0 45 0" material="color: #4CC3D9;"></a-entity>
+    <a-entity camera look-controls wasd-controls position="0 1.6 0"></a-entity>
+</a-scene>
+<div id="main-app-container">
+    <!--<video id="webcam-0-container" class="viewer-container" autoplay width="640" height="480" style="border: black 2px solid;"></video>
+    <div id="errorMsg"></div>
+    <div class="menu-container">
+        <div id="link-to-new-rfid-menu-button" class="menu-button">link</div>
+    </div>
+    <div id="connect-to-rfid-menu-button" class="menu-button"></div>-->
+    
+</div>
+</html>
