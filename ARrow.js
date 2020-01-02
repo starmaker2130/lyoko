@@ -452,7 +452,7 @@ io.sockets.on('connection', function(socket){
                         0
                     ],
                     heading: "landed",
-                    speed: 10
+                    speed: 30
                 }
             };
 
@@ -1051,7 +1051,7 @@ function facialRecognitionTest(source, target, renderRate){
                 }
             });
 
-            cv.waitKey(10);
+            cv.waitKeyclie;
 
         });
     }, delayInterval);
