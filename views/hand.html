@@ -1,6 +1,35 @@
 <html>
 <head>
     <title>Bone Hands - Leap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, html{
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+        
+        #action-container{
+            display: block;
+            width: 200px;
+            height: 75px;
+            border-radius: 10px;
+            position: absolute;
+            top: 5%;
+            left: 50%;
+            margin-left: -100px;
+            background-color: white;
+            color: black;
+            text-align: center;
+            line-height: 75px;
+            font-size: 20px;
+            z-index: 10;
+        }
+    </style>
     <script src="./js/leap-0.6.4.js"></script>
     <script src="./js/leap-plugins-0.1.6.js"></script>
     <script src="./js/socket.io.js"></script>
@@ -9,7 +38,6 @@
         Leap.loop({background: true}, {
             hand: function (hand) {
                 hand.fingers.forEach(function (finger) {
-                  // This is the meat of the example - Positioning `the cylinders on every frame:
                   finger.data('boneMeshes').forEach(function(mesh, i){
                       var bone = finger.bones[i];
                       mesh.position.fromArray(bone.center());
@@ -32,121 +60,144 @@
                   });
 
                 });
-          /*      var armMesh = hand.data('armMesh');
-                armMesh.position.fromArray(hand.arm.center());
-                armMesh.setRotationFromMatrix(
-                  (new THREE.Matrix4).fromArray( hand.arm.matrix() )
-                );
-                armMesh.quaternion.multiply(baseBoneRotation);
-                armMesh.scale.x = hand.arm.width / 3; //2
-                armMesh.scale.z = hand.arm.width / 3; //4*/
+                
+                if(hand.grabStrength<1){
+                    if(hand.palmPosition[0]>100){
+                        /*
+                        console.log("move drone right");
+                        console.log(`last move: ${sessionManager.drone.lastMove}`);
+                        */
+                        if(sessionManager.drone.lastMove!="right"){
+                            sessionManager.moveCount = 0;
+                            sessionManager.drone.lastMove = "right";
+                        }
+                        else {
+                            sessionManager.moveCount++;
+                            if(sessionManager.moveCount>=5){
+                                sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "right"});
+                            }
+                        }
+                    }
+                    else if(hand.palmPosition[0]<-100){
+                        /*
+                        console.log("move drone left");
+                        console.log(`last move: ${sessionManager.drone.lastMove}`);
+                        */
+                        if(sessionManager.drone.lastMove!="left"){
+                            sessionManager.moveCount = 0;
+                            sessionManager.drone.lastMove = "left";
+                        }
+                        else {
+                            sessionManager.moveCount++;
+                            if(sessionManager.moveCount>=5){
+                                sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "left"});
+                            }
+                        }
+                    }
 
-                if(hand.palmPosition[0]>100){
-                    /*console.log("move drone right");
-                    console.log(`last move: ${sessionManager.lastMove}`);*/
-                    if(sessionManager.lastMove!="right"){
-                        sessionManager.moveCount = 0;
-                        sessionManager.lastMove = "right";
-                    }
-                    else {
-                        sessionManager.moveCount++;
-                        if(sessionManager.moveCount>=5){
-                            sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "right"});
+                    if(hand.palmPosition[2]>100){
+                        /*
+                        console.log("move drone back");
+                        console.log(`last move: ${sessionManager.drone.lastMove}`);
+                        */
+                        if(sessionManager.drone.lastMove!="back"){
+                            sessionManager.moveCount = 0;
+                            sessionManager.drone.lastMove = "back";
+                        }
+                        else {
+                            sessionManager.moveCount++;
+                            if(sessionManager.moveCount>=5){
+                                sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "back"});
+                            }
                         }
                     }
-                }
-                else if(hand.palmPosition[0]<-100){
-                    /*console.log("move drone left");
-                    console.log(`last move: ${sessionManager.lastMove}`);*/
-                    if(sessionManager.lastMove!="left"){
-                        sessionManager.moveCount = 0;
-                        sessionManager.lastMove = "left";
-                    }
-                    else {
-                        sessionManager.moveCount++;
-                        if(sessionManager.moveCount>=5){
-                            sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "left"});
+                    else if(hand.palmPosition[2]<15){
+                        /*
+                        console.log("move drone forward");
+                        console.log(`last move: ${sessionManager.drone.lastMove}`);
+                        */
+                        if(sessionManager.drone.lastMove!="forward"){
+                            sessionManager.moveCount = 0;
+                            sessionManager.drone.lastMove = "forward";
+                        }
+                        else {
+                            sessionManager.moveCount++;
+                            if(sessionManager.moveCount>=5){
+                                sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "forward"});
+                            }
                         }
                     }
-                }
 
-                if(hand.palmPosition[2]>100){
-                    /*console.log("move drone back");
-                    console.log(`last move: ${sessionManager.lastMove}`);*/
-                    if(sessionManager.lastMove!="back"){
-                        sessionManager.moveCount = 0;
-                        sessionManager.lastMove = "back";
-                    }
-                    else {
-                        sessionManager.moveCount++;
-                        if(sessionManager.moveCount>=5){
-                            sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "back"});
+                    if(hand.palmPosition[1]>175){
+                        /*
+                        console.log("move drone up");
+                        console.log(`last move: ${sessionManager.drone.lastMove}`);
+                        */
+                        if(sessionManager.drone.lastMove!="up"){
+                            sessionManager.moveCount = 0;
+                            sessionManager.drone.lastMove = "up";
+                        }
+                        else {
+                            sessionManager.moveCount++;
+                            if(sessionManager.moveCount>=5){
+                                sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "up"});
+                            }
                         }
                     }
-                }
-                else if(hand.palmPosition[2]<15){
-                    /*console.log("move drone forward");
-                    console.log(`last move: ${sessionManager.lastMove}`);*/
-                    if(sessionManager.lastMove!="forward"){
-                        sessionManager.moveCount = 0;
-                        sessionManager.lastMove = "forward";
-                    }
-                    else {
-                        sessionManager.moveCount++;
-                        if(sessionManager.moveCount>=5){
-                            sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "forward"});
+                    else if(hand.palmPosition[1]<75){
+                        /*
+                        console.log("move drone down");
+                        console.log(`last move: ${sessionManager.drone.lastMove}`);
+                        */
+                        if(sessionManager.drone.lastMove!="down"){
+                            sessionManager.moveCount = 0;
+                            sessionManager.drone.lastMove = "down";
+                        }
+                        else {
+                            sessionManager.moveCount++;
+                            if(sessionManager.moveCount>=5){
+                                sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "down"});
+                            }
                         }
                     }
-                }
 
-                if(hand.palmPosition[1]>150){
-                    /*console.log("move drone up");
-                    console.log(`last move: ${sessionManager.lastMove}`);*/
-                    if(sessionManager.lastMove!="up"){
-                        sessionManager.moveCount = 0;
-                        sessionManager.lastMove = "up";
-                    }
-                    else {
-                        sessionManager.moveCount++;
-                        if(sessionManager.moveCount>=5){
-                            sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "up"});
+                    if(hand.palmPosition[0]<100&&hand.palmPosition[0]>-100&&hand.palmPosition[2]<100&&hand.palmPosition[2]>15&&hand.palmPosition[1]<175&&hand.palmPosition[1]>75){
+                        if(sessionManager.drone.lastMove!="hover"){
+                            sessionManager.moveCount = 0;
+                            sessionManager.drone.lastMove = "hover";
+                        }
+                        else {
+                            sessionManager.moveCount++;
+                            if(sessionManager.moveCount>=5){
+                                sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "hover"});
+                            }
                         }
                     }
                 }
-                else if(hand.palmPosition[1]<50){
-                    /*console.log("move drone down");
-                    console.log(`last move: ${sessionManager.lastMove}`);*/
-                    if(sessionManager.lastMove!="down"){
+                else{
+                    if(sessionManager.drone.lastMove!="land"){
                         sessionManager.moveCount = 0;
-                        sessionManager.lastMove = "down";
+                        sessionManager.drone.lastMove = "land";
                     }
                     else {
                         sessionManager.moveCount++;
-                        if(sessionManager.moveCount>=5){
-                            sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "down"});
+                        if(sessionManager.moveCount==5){
+                            sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "land"});
                         }
                     }
                 }
-
-                if(hand.palmPosition[0]<100&&hand.palmPosition[0]>-100&&hand.palmPosition[2]<100&&hand.palmPosition[2]>15&&hand.palmPosition[1]<75&&hand.palmPosition[1]>25){
-                    //console.log("hover x");
-                    if(sessionManager.lastMove!="hover"){
-                        sessionManager.moveCount = 0;
-                        sessionManager.lastMove= "hover";
-                    }
-                    else {
-                        sessionManager.moveCount++;
-                        if(sessionManager.moveCount>=5){
-                            sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "hover"});
-                        }
-                    }
-                }
+                
 
                 renderer.render(scene, camera);
         }})
         .use('handHold')
         .use('handEntry')
         .on('handFound', function(hand){
+            if(sessionManager.drone.lastMove=="start"){
+                document.getElementById("main-app-container").style.backgroundColor = "yellow";
+                document.getElementById("action-container").innerHTML = "<p>on standby</p>"
+            }
+            
             hand.fingers.forEach(function (finger) {
                 var boneMeshes = [];
                 var jointMeshes = [];
@@ -171,13 +222,21 @@
                     scene.add(jointMesh);
                     jointMeshes.push(jointMesh);
                 }
+                
                 finger.data('boneMeshes', boneMeshes);
                 finger.data('jointMeshes', jointMeshes);
-
-                sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "takeoff"});
-
+                
+                if(sessionManager.drone.lastMove!="hover"&&sessionManager.drone.lastMove!="takeoff"){
+                    console.log(sessionManager.drone.lastMove);
+                    sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "takeoff"});
+                    sessionManager.drone.lastMove = "takeoff";
+                }
+                else if(sessionManager.drone.lastMove=="stop"){
+                    sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "hover"});
+                }
           });
-          /*if (hand.arm){ // 2.0.3+ have arm api,
+          /*
+            if (hand.arm){ // 2.0.3+ have arm api,
             // CylinderGeometry(radiusTop, radiusBottom, height, radiusSegments, heightSegments, openEnded)
             var armMesh = new THREE.Mesh(
               new THREE.CylinderGeometry(1, 1, hand.arm.length, 64),
@@ -186,31 +245,41 @@
             armMesh.material.color.setHex(0xffffff);
             scene.add(armMesh);
             hand.data('armMesh', armMesh);
-          }*/
+          }
+          */
         })
         .on('handLost', function(hand){
             hand.fingers.forEach(function (finger) {
-              var boneMeshes = finger.data('boneMeshes');
-              var jointMeshes = finger.data('jointMeshes');
-              boneMeshes.forEach(function(mesh){
-                scene.remove(mesh);
-              });
-              jointMeshes.forEach(function(mesh){
-                scene.remove(mesh);
-              });
-              finger.data({
-                boneMeshes: null,
-                boneMeshes: null
-              });
-            });
-          /*  var armMesh = hand.data('armMesh');
-            scene.remove(armMesh);
-            hand.data('armMesh', null);*/
+                var boneMeshes = finger.data('boneMeshes');
+                var jointMeshes = finger.data('jointMeshes');
 
-            sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "hoverstop"});
+                boneMeshes.forEach(function(mesh){
+                    scene.remove(mesh);
+                });
+
+                jointMeshes.forEach(function(mesh){
+                    scene.remove(mesh);
+                });
+
+                finger.data({
+                    boneMeshes: null,
+                    boneMeshes: null
+                });
+            });
+            
+            if(sessionManager.drone.lastMove=="land"){
+                document.getElementById("action-container").innerHTML = "<p>landed!</p>";
+            }
+            else{
+                document.getElementById("main-app-container").style.backgroundColor = "yellow";
+                document.getElementById("action-container").innerHTML = "<p>on standby</p>";
+                sessionManager.connection.emit("CLIENTrequestDroneMovementSERVER", {status: true, direction: "hoverstop"});
+
+                sessionManager.drone.lastMove = "hover";
+            }
+            
             renderer.render(scene, camera);
-        })
-        .connect();
+        }).connect();
         // all units in mm
 
         var initScene = function () {
@@ -248,21 +317,49 @@
         );
 
         var sessionManager = {
-          connection: null,
-          drone: {
-            position: null,
-            currentDirection: null,
-            lastMove : "hover",
-            moveCount: 0
-          }
+            connection: null,
+            drone: {
+                position: null,
+                currentDirection: null,
+                lastMove : "start",
+                moveCount: 0
+            }
         };
-
+        
+        //600 location 565558
+        
         document.addEventListener("DOMContentLoaded", function(){
             initScene();
             sessionManager.connection = io.connect(location.host);
 
             sessionManager.connection.emit("CLIENTconnectHandToDroneSERVER", {status: true});
 
+            sessionManager.connection.on("SERVERsendDroneMovementResponseToCLIENT", function(data){
+                if(data.status){
+                    //console.log(`server responded with action: ${data.response}`);
+                    document.getElementById("action-container").innerHTML = `<p>${data.response}</p>`;
+                    switch(data.response){
+                        case "up":
+                        case "down":
+                        case "left":
+                        case "right":
+                        case "forward":
+                        case "back":
+                            document.getElementById("main-app-container").style.backgroundColor = "aquamarine";
+                            break;
+                        case "hover":
+                            document.getElementById("main-app-container").style.backgroundColor = "red";
+                            break;
+                        case "land":
+                            document.getElementById("main-app-container").style.backgroundColor = "blue";
+                            break;
+                        default:
+                            document.getElementById("main-app-container").style.backgroundColor = "yellow";
+                            break;
+                    }
+                }
+            });
+            
             sessionManager.connection.on("SERVERhandleClientLinkRequestCLIENT", function(data){
                 let drone = data.drone;
 
@@ -270,16 +367,13 @@
                 sessionManager.drone.currentDirection = drone.heading;
 
                 console.log(sessionManager.drone);
-            })
+            });
         });
 
     </script>
 </head>
-<body>
+<body id="main-app-container">
+    <div id="action-container">no current action</div>
+    
 </body>
-
-<script>
-
-
-  </script>
 </html>

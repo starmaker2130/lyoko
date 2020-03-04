@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Block Template</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Titillium+Web&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body, html{
+            width: 100%;
+            height: 100%;
+        }
+        
+        #board-container{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: -300px;
+            margin-left: -300px;
+            width: 600px;
+            height: 600px;
+            font-size: 0;
+            font-family: "Titillium Web", sans-serif;
+            font-weight: 900;
+        }
+        
+        .board-block-container{
+            width: 33%;
+            height: 33%;
+            display: inline-block;
+            text-align: center;
+            line-height: 200px;
+            font-size: 60px;
+            cursor: pointer;
+            transition: background-color 0.5s, color 0.5s, height 1s, width 1s;
+        }
+        
+        .board-block-container:hover{
+            background-color: black !important;
+            color: white !important;
+        }
+        
+        #board-block-0{
+            background-color: white;
+            color: black;
+            text-transform: uppercase;
+        }
+                
+        #board-block-1{
+            background-color: red;
+            color: white;
+        }
+                
+        #board-block-2{
+            background-color: orange;
+            color: white;
+        }
+                
+        #board-block-3{
+            background-color: yellow;
+            color: black;
+        }
+                
+        #board-block-4{
+            background-color: aquamarine;
+            color: white;
+        }
+                
+        #board-block-5{
+            background-color: blue;
+            color: white;
+        }
+        
+        #board-block-6{
+            background-color: indigo;
+            color: white;
+        }
+        
+        #board-block-7{
+            background-color: violet;
+            color: white;
+        }
+        
+        #board-block-8{
+            background-color: crimson;
+            color: lightsteelblue;
+        }
+    </style>
+    <script>
+        function expandSelection(item, collection){
+            for(var i = 0; i<collection.length; i++){
+                (function(){
+                    let current = i;
+                    if(collection[current]!=item)minimizeSelection(collection[current]);
+                    
+                })()
+            }
+            //console.log(item);
+            item.style.height = "100%"
+            item.style.width = "100%";
+        }
+        
+        function minimizeSelection(minimizeThis){
+            console.log(minimizeThis);
+            minimizeThis.style.height = "0";
+            minimizeThis.style.width = "0";
+            minimizeThis.innerHTML = "";
+        }
+        
+        document.addEventListener("DOMContentLoaded", function(){
+            let blocks = document.getElementsByClassName("board-block-container"); 
+            for(var j = 0; j<blocks.length; j++){
+                (function(){
+                    let current = j;
+                    blocks[current].addEventListener("click", function(){
+                        expandSelection(this, blocks);
+                    });
+                })()
+            }
+        });
+    </script>
+</head>
+<body>
+    <div id="board-container">
+        <div id="board-block-8" class="board-block-container">8</div>
+        <div id="board-block-7" class="board-block-container">7</div>
+        <div id="board-block-6" class="board-block-container">6</div>
+        <div id="board-block-5" class="board-block-container">5</div>
+        <div id="board-block-0" class="board-block-container">menu</div>
+        <div id="board-block-4" class="board-block-container">4</div>
+        <div id="board-block-3" class="board-block-container">3</div>
+        <div id="board-block-2" class="board-block-container">2</div>
+        <div id="board-block-1" class="board-block-container">1</div>
+    </div>
+</body>
+    

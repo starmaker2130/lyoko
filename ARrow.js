@@ -65,6 +65,14 @@ var io = require('socket.io').listen(app.listen(config.PORT, function(){
 
 }));
 
+var bebop = require('node-bebop');
+var droneMovingSpeed = 5;
+var droneTurningSpeed = function(){
+    return Math.min(droneMovingSpeed*2, 100);
+};
+
+var droneController = null;
+
 var SNACKSHACK = {
     type: 'DecentralizedImmersiveApplication',
     ATOWN: {
@@ -226,14 +234,6 @@ app.get('/output', function(req, res){
     });
 });
 
-app.get("/template", function(req, res){
-    var result = new WhichBrowser(req.headers);
-    console.log(result.toString());
-    
-    console.log("viewing template");
-    res.render("template.html", {root: dir[0]});
-});
-
 /*boards*/
 
 app.get('/grio', function(req, res){
@@ -300,6 +300,7 @@ io.sockets.on('connection', function(socket){
     //var conn = socket;
 
     // applicationClient sockets
+
     socket.on('requestDIAStream', function(data){
 
         if(data.status){
@@ -428,7 +429,17 @@ io.sockets.on('connection', function(socket){
             SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV = {
                 type: "EulaliesVoyager",
                 connect: function(){
-                    console.log('connected to eV');
+                    droneController = bebop.createClient();
+                    
+                    droneController.connect(function(){
+                        console.log('connected to eV'); 
+                    });
+                    
+                    droneController.on('battery', function(data){
+                        console.log('-----------------');
+                        console.log(`battery: ${data}`);
+                        console.log('-----------------');
+                    });
                 },
                 move: function(direction, speed){
                     let self = this;
@@ -441,7 +452,7 @@ io.sockets.on('connection', function(socket){
                         0
                     ],
                     heading: "landed",
-                    speed: 10
+                    speed: 30
                 }
             };
 
@@ -457,127 +468,82 @@ io.sockets.on('connection', function(socket){
             let direction = data.direction;
             let speed = SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.speed;
             switch(direction){
-                case "land":
-                    if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "land"){
-                        console.log(`land.`);
-                        
-                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
-                            status: true,
-                            response: "land"
-                        });
-                        
-                        SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "land";
-                    }
-                break;
                 case "takeoff":
-                    if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "takeoff"&&SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hoverstop"){
+                    if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "takeoff"){
                         console.log(`takeoff.`);
-                        
-                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
-                            status: true,
-                            response: "takeoff"
-                        });
-                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "takeoff";
+                        droneController.takeoff();
                     }
                 break;
                 case "right":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "right"){
                         console.log(`move drone right at ${speed}`);
-                        
-                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
-                            status: true,
-                            response: "right"
-                        });
-                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "right";
+                        droneController.right(speed);
                     }
                 break;
                 case "left":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "left"){
                         console.log(`move drone left at ${speed}`);
-                        
-                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
-                            status: true,
-                            response: "left"
-                        });
-                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "left";
+                        droneController.left(speed);
                     }
                     break;
                 case "forward":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "forward"){
                         console.log(`move drone forward at ${speed}`);
-                        
-                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
-                            status: true,
-                            response: "forward"
-                        });
-                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "forward";
+                        droneController.front(speed);
                     }
                     break;
                 case "back":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "back"){
                         console.log(`move drone backward at ${speed}`);
-                        
-                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
-                            status: true,
-                            response: "back"
-                        });
-                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "back";
+                        droneController.back(speed);
                     }
                     break;
                 case "up":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "up"){
                         console.log(`move drone up at ${speed}`);
-                        
-                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
-                            status: true,
-                            response: "up"
-                        });
-                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "up";
+                        droneController.up(speed);
                     }
                     break;
                 case "down":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "down"){
                         console.log(`move drone down at ${speed}`);
-                        
-                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
-                            status: true,
-                            response: "down"
-                        });
-                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "down";
+                        droneController.down(speed);
                     }
                     break;
                 case "hover":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hover"){
                         console.log(`drone stopped...\nset to hover.`);
-                        
-                        socket.emit("SERVERsendDroneMovementResponseToCLIENT", {
-                            status: true,
-                            response: "hover"
-                        });
-                        
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "hover";
+                        droneController.stop();
                     }
                     break;
                 case "hoverstop":
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hover"){
-                        console.log(`drone stopped...\nset to hover.`);
-                        //let countValue = 5;
-                        /*  let countDownToLanding = setInterval(function(){
+                        console.log(`drone stopped...\nset to hover indefinitely`);
+                        SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "hover";
+                        droneController.stop();
+                    }
+                    break;
+                case "land":
+                    if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "land"){
+                        console.log(`drone stopped...\nset to hover.\nlanding in...`);
+                        let countValue = 3;
+                        let countDownToLanding = setInterval(function(){
                             console.log(`${countValue}...`);
                             countValue--;
                             if(countValue==-1){
                                 clearInterval(countDownToLanding);
                                 SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "landed";
+                                droneController.land();
                             }
-                        }, 1000);*/
-                        
+                        }, 1000);
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "hover";
                     }
                     break;
@@ -585,6 +551,7 @@ io.sockets.on('connection', function(socket){
                     if(SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading != "hover"){
                         console.log(`drone instructed not to move.`);
                         SNACKSHACK.ATOWN.OBJECTSUBJECTS.EV.core.heading = "hover";
+                        droneController.stop();
                     }
                     console.log(`remain still...\ndrone set to hover.`);
                     break;
@@ -1084,7 +1051,7 @@ function facialRecognitionTest(source, target, renderRate){
                 }
             });
 
-            cv.waitKey(10);
+            cv.waitKeyclie;
 
         });
     }, delayInterval);
