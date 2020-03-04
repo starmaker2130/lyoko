@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>NYT v.0.0.5</title>
+    <style>
+        
+    </style>
+    <script src="../js/aframe100.js"></script>
+    <script src="../js/aframe-ar.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            setTimeout(function(){
+                 document.getElementById("super-tuesday-title-container").object3D.visible = true;
+            }, 4000);
+            
+            setTimeout(function(){
+                document.getElementById("live-primary-title-container").object3D.visible = true;
+            }, 6000);
+            
+            setTimeout(function(){
+                document.getElementById("election-results-title-container").object3D.visible = true;
+            }, 8000);
+            
+            setTimeout(function(){
+                document.getElementById("check-for-updates-title-container").object3D.visible = true;
+            }, 10000);
+            
+            let timerCount;
+            
+            setTimeout(function(){
+                let timerObject = document.getElementById("update-timer-container");
+                let mapObject = document.getElementById("map-container");
+                let timerArray = [
+                    ":10",
+                    ":09",
+                    ":08",
+                    ":07",
+                    ":06",
+                    ":05",
+                    ":04",
+                    ":03",
+                    ":02",
+                    ":01",
+                    ":00",
+                ];
+                let count = 1;
+                
+                timerObject.object3D.visible = true;
+                
+                let permaCounter;
+                let permaCount = 0;
+                
+                timerCount = setInterval(function(){
+                    
+                    timerObject.setAttribute("text", "value", timerArray[count]);
+                    count++;
+                    
+                    if(count===timerArray.length){
+                        clearInterval(timerCount);
+                        mapObject.setAttribute("material", "src", "#nyt-electoral-map");
+                        mapObject.setAttribute("material", "color", "#D1EBDC");
+                        
+                        document.getElementById("live-primary-title-container").object3D.visible = false;
+            
+                        document.getElementById("election-results-title-container").object3D.visible = false;
+            
+                        document.getElementById("super-tuesday-title-container").object3D.visible = false;
+                        
+                        permaCounter = setInterval(function(){
+                            timerObject.setAttribute("text", "value", timerArray[permaCount]);
+                            permaCount++;
+                            
+                            if(permaCount===timerArray.length){
+                                permaCount = 0;
+                            }
+                        }, 1000);
+                        
+                    }
+                    
+                }, 1000);
+                
+            }, 12000);
+        });
+    </script>
+</head>
+<body>
+    <a-scene>
+        <a-assets>
+            <img id="nyt-banner" src="../media/img/nyt_banner.png" preload="true" />
+            <img id="nyt-electoral-map" src="../media/img/nyt-super-tuesday-map.png" preload="true" />
+        </a-assets>
+        <a-marker preset="hiro"><!-- pattern-nyt-marker-candidate-->
+            <a-entity id="map-container"
+                      geometry="primitive: plane; width: 0.1; height: 0.1"
+                      position="0 1 -4"
+                      rotation="-90 0 0"
+                      material="side: double; color: #7BC8A4"
+                      animation__appearWidth="property: geometry.width; to: 4.1; easing: linear; delay: 3000; dur: 5000;"
+                      animation__appearWidthSecondary="property: geometry.width; from: 4; to: 6; easing: linear; delay: 8000; dur: 2000;"
+                      animation__appearHeight="property: geometry.height; to: 4.1; easing: linear; delay: 3000; dur: 5000;">
+            </a-entity>
+            <a-entity id="nyt-banner-container"
+                      geometry="primitive: plane; width: 3.5; height: 0.5"
+                      position="0 1.2 -5"
+                      rotation="-90 0 0"
+                      material="side: double; src: #nyt-banner"
+                      animation__moveUp="property: position; to: 0 1.2 -6.5; easing: linear; delay: 22000; dur: 2000;">
+            </a-entity>
+
+            <a-entity id="super-tuesday-title-container"
+                      geometry="primitive: plane; width: 5;"
+                      text="value: SUPER TUESDAY; color: white; align: center; font: https://cdn.aframe.io/fonts/Exo2Bold.fnt;"
+                      position="0 1.2 -4.5"
+                      rotation="-90 0 0"
+                      material="opacity: 0.0; transparent: true"
+                      visible="false">
+            </a-entity>
+
+            <a-entity id="live-primary-title-container"
+                      geometry="primitive: plane; width: 5;"
+                      text="value: Live Primary; color: white; align: center; font: https://cdn.aframe.io/fonts/DejaVu-sdf.fnt;"
+                      position="0 1.5 -4.2"
+                      rotation="-90 0 0"
+                      material="opacity: 0.0; transparent: true"
+                      visible="false">
+            </a-entity>
+
+            <a-entity id="election-results-title-container"
+                      geometry="primitive: plane; width: 5;"
+                      text="value: Election Results; color: white; align: center; font: https://cdn.aframe.io/fonts/DejaVu-sdf.fnt;"
+                      position="0 1.5 -3.9"
+                      rotation="-90 0 0"
+                      material="opacity: 0.0; transparent: true"
+                      visible="false">
+            </a-entity>
+
+            <a-entity id="check-for-updates-title-container"
+                      geometry="primitive: plane; width: 3; height: 0.4"
+                      text="value: Checking for updates in ; color: white; align: center; width: 4; font: https://cdn.aframe.io/fonts/DejaVu-sdf.fnt;"
+                      position="-0.1 1.5 -3.3"
+                      rotation="-90 0 0"
+                      material="color: red;"
+                      visible="false"
+                      animation__moveDown="property: position; to: -0.1 1.5 -2; easing: linear; delay: 22000; dur: 2000;">
+            </a-entity>
+
+            <a-entity id="update-timer-container"
+                      geometry="primitive: plane; width: 0.5; height: 0.4"
+                      text="value: 0:10 ; color: white; align: center; width: 4; font: https://cdn.aframe.io/fonts/DejaVu-sdf.fnt;"
+                      position="1.5 1.5 -3.3"
+                      rotation="-90 0 0"
+                      material="color: red;"
+                      visible="false"
+                      animation__moveDownToo="property: position; to: 1.5 1.5 -2; easing: linear; delay: 22000; dur: 2000;">
+            </a-entity>
+        </a-marker>
+    </a-scene>
+</body>
+</html>

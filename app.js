@@ -170,7 +170,22 @@ app.get('/nyt', function(req, res){
         deviceType = 'mobile';
     }
 
-    res.render('nyt.html',{root: dir[0]});
+    res.render('nyt-ar.html',{root: dir[0]});
+});
+
+app.get('/nyt-final', function(req, res){
+    var result = new WhichBrowser(req.headers);
+    console.log(result.toString());
+    if(result.isType('desktop')){
+        console.log('This is a desktop computer.');
+        deviceType = 'desktop';
+    }
+    else{
+        console.log('This is a mobile device.');
+        deviceType = 'mobile';
+    }
+
+    res.render('nyt-ar-final.html',{root: dir[0]});
 });
 
 app.get("/treehouse", function(req, res){
@@ -303,7 +318,7 @@ app.get('/media/gifs/:gif_id', function(req, res){
 
 app.get('/media/pattern/:pattern_id', function(req, res){
     var pattern_id = req.params.pattern_id;
-    res.sendFile(pattern_id+'.patt', {root: dir[5]});
+    res.sendFile(pattern_id, {root: dir[5]});
 });
 
 app.get('/media/img/:img_id', function(req, res){
