@@ -142,6 +142,21 @@ app.get('/', function(req, res){
     res.render('snackshack.html',{root: dir[0]});
 });
 
+app.get('/contest', function(req, res){
+    var result = new WhichBrowser(req.headers);
+    console.log(result.toString());
+    if(result.isType('desktop')){
+        console.log('This is a desktop computer.');
+        deviceType = 'desktop';
+    }
+    else{
+        console.log('This is a mobile device.');
+        deviceType = 'mobile';
+    }
+
+    res.render('race.html',{root: dir[0]});
+});
+
 app.get("/treehouse", function(req, res){
   var result = new WhichBrowser(req.headers);
   console.log(result.toString());
