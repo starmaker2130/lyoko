@@ -157,7 +157,6 @@ app.get('/contest', function(req, res){
     res.render('race.html',{root: dir[0]});
 });
 
-
 app.get('/nyt', function(req, res){
     var result = new WhichBrowser(req.headers);
     console.log(result.toString());
@@ -216,7 +215,6 @@ app.get("/treehouse", function(req, res){
 
   res.render("hand_sample.html", {root: dir[0]});
 });
-
 
 app.get("/augr", function(req, res){
   var result = new WhichBrowser(req.headers);
