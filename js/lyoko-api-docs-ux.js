@@ -4,8 +4,8 @@
 *   DRAFT SPECIFICATION V 0.3.1
 *   AUTHOR: PATRICE-MORGAN ONOLY [@starmaker2130]
 *   ---------------------------------------------
-*   TARGET DETAILS:
-*   NAME: api-docs-ux.js
+*   TARGET DETAILS: LYOKO API DOCS
+*   NAME: lyoko-api-docs-ux.js
 *   CREATION:
 *   LAST MODIFICATION: 16.05.12020
 *   HOST: @houseofvenus
@@ -67,11 +67,13 @@ var Activity = {
                         console.log(" ] ] ] 3] tapped app type flat selection container \n dev view \n author: sm itachi");
                         document.getElementById("page-1-container").style.display = "block";
                         
-                        document.getElementById("page-0-container").style.opacity = 0;
-                        document.getElementById("page-0-container").style.height = 0;
-                        
-                        document.getElementById("page-1-container").style.opacity = 1.0;
-                        document.getElementById("page-1-container").style.height = "100%";
+                        setTimeout(function(){
+                            document.getElementById("page-0-container").style.opacity = 0;
+                            document.getElementById("page-0-container").style.height = 0;
+
+                            document.getElementById("page-1-container").style.opacity = 1.0;
+                            document.getElementById("page-1-container").style.height = "100%";
+                        }, 50);
                         
                         setTimeout(function(){
                             document.getElementById("page-0-container").style.display = "none";
@@ -94,11 +96,26 @@ var Activity = {
                 },   
             ]
         },
-        
+        {
+            id: "page-1-container",
+            num: 5,
+            type: "container",
+            level: 1,
+            list: [
+                {
+                    name: "click",
+                    method: function(){
+                        console.log(" on pgae 1!")
+                    }
+                },   
+            ]
+        },
     ]
 };
 
 function buildMarkup(){
+    /*console.log(Experience.compositionTree.length)
+    console.log(Experience);*/
     for(var i=0; i<Experience.compositionTree.length; i++){ // traverse the markup composition tree
         //TODO: compartamentalize into its own named function declaration
         let childEl = document.createElement("div");        // create a container
@@ -108,12 +125,13 @@ function buildMarkup(){
         // build the component from the retrieved JSON formatted descripter
         childEl.id = currentComponent.id;       // set the container id
         childEl.classes = currentComponent.classes; // set the container classes
-        childEl.innerMarkup = currentComponent.innerMarkup; // insert any static textual markup inside the container
+        childEl.innerHTML = currentComponent.innerMarkup; // insert any static textual markup inside the container
 
         if(currentComponent.level===0){ // if the current child is the main app container 
             document.body.appendChild(childEl); // append it to the body
         }
-        else if(currentComponent.level===1 || currentComponent.level===2 || currentComponent.level===3){    // if the current child belongs to any other level of the experience
+        else{    // if the current child belongs to any other level of the experience
+           // console.log(childEl.id);
             document.getElementById(Experience.compositionTree[currentComponent.parent].id).appendChild(childEl);   // append it to its parent if it has one
         }
     }    

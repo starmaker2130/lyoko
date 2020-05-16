@@ -1,0 +1,132 @@
+/*
+*   ----------------------------------------------
+*   .LYOKO USER INTERFACE STYLE COMPILATION TARGET
+*   DRAFT SPECIFICATION V 0.3.1
+*   AUTHOR: PATRICE-MORGAN ONOLY [@starmaker2130]
+*   ----------------------------------------------
+*   TARGET DETAILS: LYOKO API DOCS
+*   NAME: lyoko-api-docs-ui.css
+*   CREATION:
+*   LAST MODIFICATION:
+*   HOST:
+*/
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Open Sans", sans-serif;
+}
+
+body, html, #main-app-container{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#main-app-container{
+    background-color: yellow;
+}
+
+#page-0-container, #page-1-container{
+    transition: opacity 0.5s, height 0.5s;
+}
+
+#page-0-container{
+    background-color: black;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#page-1-container{
+    background-color: white;
+    width: 100%;
+    height: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    display: none;
+}
+
+#app-type-selection-container{
+    background-color: rgba(255, 255, 255, 0);/*blue;*/
+    width: 300px;
+    height: 350px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -175px 0 0 -150px;
+    line-height: 30px;
+    font-size: 24px;
+    color: white;
+}
+
+#app-type-flat-selection-container{
+    background-image: url("../media/img/flat-icon.png");
+    background-size: 120px 120px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#app-type-immersive-selection-container{
+    background-image: url("../media/img/eye-icon.png");
+    background-size: 80px 80px;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+#app-type-flat-selection-container, #app-type-immersive-selection-container{
+    width: 100%;
+    height: 100px;
+    height: 45%;
+    margin: 2% auto;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.7);
+}
+
+#app-type-flat-selection-container:hover, #app-type-immersive-selection-container:hover{
+    background-color: rgba(255,255,255, 1.0);
+}
+
+#dynamic-table-of-contents-container{
+    width: 100%;
+    height: 100%;
+}
+
+#introduction-docs-container, #installation-docs-container, #conversational-programming-docs-container, #atown-docs-container, #dias-docs-container{
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    line-height: 100px;
+    font-size: 36px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.25s, background-color 0.25s;
+}
+
+#introduction-docs-container:hover, #installation-docs-container:hover, #conversational-programming-docs-container:hover, #atown-docs-container:hover, #dias-docs-container:hover{
+    background-color: black;
+    color: white;
+}
+
+#hov-logo-container{
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    margin-left: -38px;
+    background-image: url("../media/img/hov_ig_logo.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+}

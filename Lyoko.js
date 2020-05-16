@@ -168,6 +168,15 @@ app.get("/a", function(req, res){
 
   res.render("augrstudio.html", {root: dir[0]});
 });
+
+app.get("/api", function(req, res){
+  var result = new WhichBrowser(req.headers);
+  console.log(result.toString());
+
+  console.log("api docs requested");
+
+  res.render("index.html", {root: dir[0]});
+});
 /**/
 
 app.get('/css/:stylesheet_id', function(req, res){
