@@ -430,11 +430,11 @@ io.sockets.on('connection', function(socket){
                 type: "EulaliesVoyager",
                 connect: function(){
                     droneController = bebop.createClient();
-                    
+
                     droneController.connect(function(){
-                        console.log('connected to eV'); 
+                        console.log('connected to eV');
                     });
-                    
+
                     droneController.on('battery', function(data){
                         console.log('-----------------');
                         console.log(`battery: ${data}`);

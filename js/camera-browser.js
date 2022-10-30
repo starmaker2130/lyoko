@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function(){
   setTimeout(function(){
       var video = document.querySelector('video');
       var constraints = window.constraints = {
-          audio: false,
+          audio: true,
           video: true
       };
       var errorElement = document.querySelector('#errorMsg');
